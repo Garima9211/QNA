@@ -1,0 +1,101 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    background:#0b5ed7;
+    color:#fff;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+}
+
+.header select{
+    padding:8px 12px;
+    border:none;
+    border-radius:6px;
+}
+
+.banner{
+    text-align:center;
+    padding:30px 20px;
+}
+
+.banner img{
+    width:80px;
+    max-width:10%;
+}
+
+.banner h1{
+    margin-top:15px;
+    color:#0b5ed7;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.date-card{
+    background:#fff;
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+
+.date-card h2{
+    color:#198754;
+    margin-bottom:12px;
+}
+
+.date-card ul{
+    padding-left:20px;
+}
+
+.date-card li{
+    margin:8px 0;
+}
+
+@media(max-width:768px){
+
+.header{
+    padding:12px;
+}
+
+.banner img{
+    width:130px;
+}
+
+.banner h1{
+    font-size:24px;
+}
+
+.date-card{
+    padding:15px;
+}
+
+}
