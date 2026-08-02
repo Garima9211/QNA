@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="hi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>The QNA - Govt Jobs GK Reels | Home</title>
+    
+    <meta name="description" content="The QNA पर पायें Govt Jobs GK रील्स। भारत का अपना सवाल-जवाब और ज्ञान मंच।">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#020617">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- External Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+   
+    <link rel="stylesheet" href="css/homeage.css">
+</head>
+<body class="page-body">
+
+    <!-- Top Sticky Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="brand-logo">
+                <a href="/">THE <span class="text-white">QNA</span></a>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="./index.html" class="nav-link active">Home</a>
+                <a href="./GK_catogery.html" class="nav-link">मंच</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Scrollable Content -->
+    <main class="main-feed">
+
+        <section id="reels-container-section" class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="live-dot">●</span> GK TRENDING TEST
+                </h2>
+            </div>
+
+            <div id="reels-feed" class="reels-feed-grid"></div>
+        </section>
+
+        <!-- Question Submission Card -->
+        <section id="add-question" class="add-q-section">
+            <div class="glass-card add-q-card">
+                <div class="card-bg-gradient"></div>
+                <div class="card-content">
+                    <h2 class="add-q-heading">ज्ञान बांटने से बढ़ता है!</h2>
+                    <p class="add-q-desc">
+                        क्या आपके पास भी कोई महत्वपूर्ण सामान्य ज्ञान (GK) का सवाल है? उसे यहाँ जोड़ें ताकि अन्य छात्र भी सीख सकें।
+                    </p>
+                    <a href="./GKQNA_login4.html" class="btn-add-q">
+                        अपना सवाल यहाँ जोड़ें <i class="fa-solid fa-plus icon-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Fixed Navigation Bar -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="./index.html" class="nav-item active">
+                <i class="fa-solid fa-house nav-icon"></i>
+                <span class="nav-text">Home</span>
+                <div class="active-dot"></div>
+            </a>
+            <a href="./feed.html" class="nav-item">
+                <i class="fa-solid fa-bolt nav-icon"></i>
+                <span class="nav-text">Feed</span>
+            </a>
+            <div class="fab-wrapper">
+                <a href="./GKQNA_login4.html" class="pro-fab" aria-label="Add Question">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
+            <a href="./GK_catogery.html" class="nav-item">
+                <i class="fa-solid fa-layer-group nav-icon"></i>
+                <span class="nav-text">मंच</span>
+            </a>
+            <a href="./login.html" class="nav-item">
+                <i class="fa-regular fa-user nav-icon"></i>
+                <span class="nav-text">Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // 1. रील्स डेटाबेस एरे
+        const reelsData = [
+            {
+                id: "gk_reel_01",
+                category: "🏛️ इतिहास (History)",
+                tag: "#01",
+                theme: "amber",
+                time: "30s",
+                question: "ऋग्वेद में कुल कितने मंडल हैं?",
+                options: ["10 मंडल", "8 मंडल", "12 मंडल", "18 मंडल"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_02",
+                category: "🌍 भूगोल (Geography)",
+                tag: "#02",
+                theme: "emerald",
+                time: "30s",
+                question: "भारत की सबसे लंबी तटरेखा वाला राज्य कौनसा है?",
+                options: ["गुजरात", "महाराष्ट्र", "आंध्र प्रदेश", "तमिलनाडु"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_03",
+                category: "⚖️ राजव्यवस्था (Polity)",
+                tag: "#03",
+                theme: "blue",
+                time: "30s",
+                question: "भारतीय संविधान का जनक किसे कहा जाता है?",
+                options: ["डॉ. बी.आर. अम्बेडकर", "महात्मा गांधी", "जवाहरलाल नेहरू", "सरदार पटेल"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_04",
+                category: "🧲 भौतिक विज्ञान (Physics)",
+                tag: "#04",
+                theme: "purple",
+                time: "30s",
+                question: "'प्रकाश वर्ष' (Light Year) किसका मात्रक है?",
+                options: ["दूरी का", "समय का", "प्रकाश की तीव्रता का", "द्रव्यमान का"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_05",
+                category: "🧪 रसायन विज्ञान (Chemistry)",
+                tag: "#05",
+                theme: "cyan",
+                time: "30s",
+                question: "आधुनिक आवर्त सारणी में कुल कितने तत्व हैं?",
+                options: ["118 तत्व", "108 तत्व", "104 तत्व", "112 तत्व"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_06",
+                category: "🦠 जीव विज्ञान (Biology)",
+                tag: "#06",
+                theme: "rose",
+                time: "30s",
+                question: "मानव शरीर की सबसे बड़ी ग्रंथि कौन सी है?",
+                options: ["यकृत (Liver)", "अग्न्याशय (Pancreas)", "थायराइड (Thyroid)", "पीयूष (Pituitary)"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_07",
+                category: "📈 अर्थव्यवस्था (Economy)",
+                tag: "#07",
+                theme: "teal",
+                time: "30s",
+                question: "भारत में केंद्रीय बैंक कौन सा है?",
+                options: ["भारतीय रिजर्व बैंक (RBI)", "भारतीय स्टेट बैंक (SBI)", "पंजाब नेशनल बैंक (PNB)", "सेंट्रल बैंक (CBI)"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_08",
+                category: "📰 करेंट अफेयर्स (Current Affairs)",
+                tag: "#08",
+                theme: "orange",
+                time: "30s",
+                question: "नीति आयोग (NITI Aayog) के अध्यक्ष कौन होते हैं?",
+                options: ["प्रधानमंत्री", "राष्ट्रपति", "वित्त मंत्री", "उपराष्ट्रपति"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_09",
+                category: "💻 कंप्यूटर ज्ञान (Computer)",
+                tag: "#09",
+                theme: "indigo",
+                time: "30s",
+                question: "कंप्यूटर का मस्तिष्क (Brain) किसे कहा जाता है?",
+                options: ["CPU", "RAM", "हार्ड डिस्क", "मदरबोर्ड"],
+                correctIndex: 0
+            },
+            {
+                id: "gk_reel_10",
+                category: "📌 स्टेटिक जीके (Static GK)",
+                tag: "#10",
+                theme: "pink",
+                time: "30s",
+                question: "'बिहू' किस राज्य का प्रसिद्ध लोक नृत्य है?",
+                options: ["असम", "पंजाब", "राजस्थान", "गुजरात"],
+                correctIndex: 0
+            }
+        ];
+
+        // 2. रील्स रेंडरिंग फंक्शन
+        function renderReels() {
+            const container = document.getElementById("reels-feed");
+            if (!container) return;
+            container.innerHTML = ""; 
+
+            reelsData.forEach((reel, reelIdx) => {
+                const card = document.createElement("div");
+                card.id = reel.id;
+                card.className = `glass-card reel-card theme-${reel.theme}`;
+                
+                let optionsHTML = "";
+                reel.options.forEach((opt, optIdx) => {
+                    optionsHTML += `
+                        <div onclick="checkAnswer(this, ${reelIdx}, ${optIdx}, ${reel.correctIndex})" 
+                             class="option-btn">
+                            <span>${String.fromCharCode(65 + optIdx)}. ${opt}</span>
+                            <i class="status-icon hidden fa-solid"></i>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-gradient-top"></div>
+                    <div class="reel-top-bar">
+                        <span class="category-tag">${reel.category} ${reel.tag}</span>
+                        <span class="reel-timer">⏱️ ${reel.time}</span>
+                    </div>
+                    <div class="reel-body">
+                        <h3 class="reel-question">${reel.question}</h3>
+                        <div class="options-container">
+                            ${optionsHTML}
+                        </div>
+                    </div>
+                    <a href="./login.html" class="btn-start-test">टेस्ट शुरू करे <i class="fa-solid fa-play icon-play"></i></a>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // 3. उत्तर जांचने का लॉजिक
+        function checkAnswer(selectedElement, reelIdx, selectedIdx, correctIdx) {
+            const container = selectedElement.parentElement;
+            
+            if (container.classList.contains("answered")) return;
+            container.classList.add("answered");
+
+            const allOptions = container.querySelectorAll(".option-btn");
+
+            if (selectedIdx === correctIdx) {
+                selectedElement.classList.add("opt-correct");
+                const icon = selectedElement.querySelector(".status-icon");
+                icon.classList.remove("hidden");
+                icon.classList.add("fa-circle-check");
+            } else {
+                selectedElement.classList.add("opt-wrong");
+                const icon = selectedElement.querySelector(".status-icon");
+                icon.classList.remove("hidden");
+                icon.classList.add("fa-circle-xmark");
+
+                const correctElement = allOptions[correctIdx];
+                correctElement.classList.add("opt-correct");
+            }
+
+            allOptions.forEach((opt, idx) => {
+                if (idx !== selectedIdx && idx !== correctIdx) {
+                    opt.classList.add("opt-dimmed");
+                }
+                opt.style.pointerEvents = "none"; 
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", renderReels);
+    </script>
+</body>
+</html>
