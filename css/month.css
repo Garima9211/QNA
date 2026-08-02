@@ -27,8 +27,8 @@ body{
 }
 
 .logo img{
-    width:55px;
-    height:55px;
+    width:20px;
+    height:20px;
     border-radius:50%;
 }
 
@@ -38,7 +38,7 @@ body{
     border-radius:6px;
 }
 
-.banner{
+/* .banner{
     text-align:center;
     padding:30px 20px;
 }
@@ -51,7 +51,7 @@ body{
 .banner h1{
     margin-top:15px;
     color:#0b5ed7;
-}
+} */
 
 .container{
     max-width:900px;
@@ -86,13 +86,13 @@ body{
     padding:12px;
 }
 
-.banner img{
+/* .banner img{
     width:130px;
 }
 
 .banner h1{
     font-size:24px;
-}
+} */
 
 .date-card{
     padding:15px;
