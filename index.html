@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>The QNA - Home</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0F19">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+
+<body>
+
+    <!-- === 1. टॉप हेडर === -->
+ <header>
+    <div class="app-container header-inner">
+
+        <div class="logo-box">
+            <div class="logo-icon">Q</div>
+            <h1 class="logo-title">The <span>QNA</span></h1>
+        </div>
+
+      <div class="header-actions">
+         <button class="icon-btn" onclick="openProfile()" aria-label="Profile">
+                  <i class="fa-regular fa-user"></i>
+             </button>
+        </div>
+
+    </div>
+</header>
+
+    <!-- === 2. मुख्य होमपेज कंटेंट === -->
+    <main class="app-container no-scrollbar">
+
+        <!-- हीरो बैनर -->
+      <div class="pp-card">
+    <!-- decorative glows -->
+    <div class="pp-glow pp-glow-1"></div>
+    <div class="pp-glow pp-glow-2"></div>
+
+    <!-- decorative sparkle burst -->
+    <svg class="pp-sparkle" viewBox="0 0 60 60" fill="none">
+      <path d="M30 0 L34 26 L60 30 L34 34 L30 60 L26 34 L0 30 L26 26 Z" fill="url(#pp-gold)" opacity="0.55" />
+      <defs>
+        <linearGradient id="pp-gold" x1="0" y1="0" x2="60" y2="60">
+          <stop offset="0%" stop-color="#F9D976" />
+          <stop offset="100%" stop-color="#E8A72E" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- decorative lightning bolt bottom right -->
+    <svg class="pp-bolt" viewBox="0 0 100 140" fill="none">
+      <path d="M55 0 L10 80 H45 L35 140 L90 55 H55 L55 0 Z" fill="url(#pp-bolt-grad)" />
+      <defs>
+        <linearGradient id="pp-bolt-grad" x1="0" y1="0" x2="100" y2="140">
+          <stop offset="0%" stop-color="#F9D976" />
+          <stop offset="100%" stop-color="#7C3FBF" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- badge -->
+    <div class="pp-badge">
+      <svg class="pp-crown" viewBox="0 0 24 24" fill="none">
+        <path d="M2 8l4 3 6-7 6 7 4-3-2 11H4L2 8z" fill="#1B1140" />
+      </svg>
+      PREMIUM PASS
+    </div>
+
+    <h2 class="pp-title">सभी 1000+ मॉक टेस्ट करें अनलॉक</h2>
+    <p class="pp-sub">प्रथम माह मात्र 1₹ में</p>
+
+    <button class="pp-cta">
+      Get Pass Now
+      <svg class="pp-arrow" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="#1B1140" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+
+        <div class="section-gap">
+
+            <!-- सब्जेक्ट्स सेक्शन -->
+           
+                <div class="section-header">
+                    <h3 class="section-title">Select Subject</h3>
+                    <a href="./GK_catogery.html" class="section-link">Test category</a>
+                </div>
+
+                <div class="scroll-row no-scrollbar">
+                    <!-- History -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-amber">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <span class="item-label">History</span>
+                    </a>
+
+                    <!-- Geography -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-emerald">
+                            <i class="fa-solid fa-earth-asia"></i>
+                        </div>
+                        <span class="item-label">Geography</span>
+                    </a>
+
+                    <!-- Constitution -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-cyan">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <span class="item-label">Constitution</span>
+                    </a>
+
+                    <!-- Science -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-purple">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <span class="item-label">Science</span>
+                    </a>
+
+                    <!-- Physics -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-violet">
+                            <i class="fa-solid fa-magnet"></i>
+                        </div>
+                        <span class="item-label">Physics</span>
+                    </a>
+
+                    <!-- Chemistry -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-sky">
+                            <i class="fa-solid fa-vial"></i>
+                        </div>
+                        <span class="item-label">Chemistry</span>
+                    </a>
+
+                    <!-- Biology -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-rose">
+                            <i class="fa-solid fa-dna"></i>
+                        </div>
+                        <span class="item-label">Biology</span>
+                    </a>
+
+                    <!-- Economics -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-green">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <span class="item-label">Economics</span>
+                    </a>
+
+                    <!-- Current Affairs -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-orange">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </div>
+                        <span class="item-label">Current Affairs</span>
+                    </a>
+
+                    <!-- Computer -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-indigo">
+                            <i class="fa-solid fa-computer"></i>
+                        </div>
+                        <span class="item-label">Computer</span>
+                    </a>
+
+                    <!-- Static GK -->
+                    <a href="./PWA_feed8.html" class="item-card">
+                        <div class="pro-card icon-card c-pink">
+                            <i class="fa-solid fa-thumbtack"></i>
+                        </div>
+                        <span class="item-label">Static GK</span>
+                    </a>
+                </div>
+            
+
+            <!-- सोशल मीडिया सेक्शन -->
+            <div>
+                <h3 class="section-title social-title">
+    Follow us on social media
+</h3>
+                <div class="scroll-row no-scrollbar">
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="item-card">
+                        <div class="pro-card icon-card c-youtube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                        <span class="item-label">YouTube</span>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://api.whatsapp.com/send?text=Hey!%20Check%20out%20The%20QNA%20App%20for%20amazing%20mock%20tests%20and%20daily%20current%20affairs:%20https://theqna.in"
+                        target="_blank" rel="noopener noreferrer" class="item-card">
+                        <div class="pro-card icon-card c-emerald">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <span class="item-label">WhatsApp</span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/theqna_official" target="_blank" rel="noopener noreferrer" class="item-card">
+                        <div class="pro-card icon-card c-pink">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <span class="item-label">Instagram</span>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://theqna.in" target="_blank"
+                        rel="noopener noreferrer" class="item-card">
+                        <div class="pro-card icon-card c-facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <span class="item-label">Facebook</span>
+                    </a>
+
+                    <!-- Telegram -->
+                    <a href="https://t.me/YourChannelName" target="_blank" rel="noopener noreferrer" class="item-card">
+                        <div class="pro-card icon-card c-sky">
+                            <i class="fa-brands fa-telegram"></i>
+                        </div>
+                        <span class="item-label">Telegram</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ट्रेंडिंग टेस्ट सीरीज़ -->
+            <div>
+                <h3 class="section-title trending-title">
+    Trending Test Series
+</h3>
+                <div class="test-list">
+
+                    <!-- 1. लाइव टेस्ट -->
+                    <a href="./homeage.html" class="pro-card test-card">
+                        <div class="test-icon-box bg-blue-subtle">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                        <div class="test-details">
+                            <div class="test-header-row">
+                                <h4 class="test-title">डेली करेंट अफेयर्स 2026</h4>
+                                <span class="badge-live">Live</span>
+                            </div>
+                            <p class="test-meta">50 Questions • 45 Mins</p>
+                        </div>
+                    </a>
+
+                    <!-- 2. लॉक्ड टेस्ट सीरीज -->
+                    <div class="pro-card test-card">
+    <div class="test-icon-box bg-amber-subtle">
+        <i class="fa-solid fa-monument"></i>
+    </div>
+
+    <div class="test-details test-details-flex">
+        <div>
+            <h4 class="test-title">आधुनिक भारत का उदय</h4>
+            <p class="test-meta">100 Questions • 90 Mins</p>
+        </div>
+
+        <div class="test-action">
+            <i class="fa-solid fa-lock group-lock-icon lock-icon"></i>
+            <a href="./upi.html" class="group-hover-btn btn-unlock">
+                Unlock
+            </a>
+        </div>
+    </div>
+</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- === 3. बॉटम नेविगेशन बार === -->
+    <nav>
+        <div class="app-container nav-inner">
+            <a href="./index.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span class="nav-label nav-label-active">Home</span>
+                <div class="active-dot"></div>
+            </a>
+
+            <a href="./feed.html" class="nav-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="nav-label">Feed</span>
+            </a>
+
+            <div class="fab-wrapper">
+                <a href="./add-question2.html" aria-label="Add Question" class="pro-fab">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
+
+            <a href="./Click_catogery_catogeyrHomepage.html" class="nav-item">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="nav-label">Test</span>
+            </a>
+
+            <a href="#" onclick="openProfile()" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span class="nav-label">Me</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        const profileImg = document.getElementById("profileImage");
+
+         if (user.photo) {
+        profileImg.src = user.photo;
+        } else {
+              profileImg.src = "images/default-user.png";
+        }
+        // function openProfile() {
+        //     const user = localStorage.getItem("user");
+        //     if (user) {
+        //         window.location.href = "profile.html";
+        //     } else {
+        //         window.location.href = "signup.html";
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        
+        /* === 2. रील्स ऐप कंटेनर === */
+        .reels-container {
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+            max-height: 880px;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            background: #000000;
+            position: relative;
+        }
+        
+        /* स्क्रॉलबार छिपाने के लिए */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* === 3. एकल रील आइटम (Reel Item) === */
+        .reel-item {
+            height: 100dvh;
+            max-height: 880px;
+            width: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+            gap: 14px; 
+            padding: 140px 16px 30px 16px;
+        }
+
+        .reel-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #0B0F19, #020617, #000000);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* === 4. मुख्य सवाल-जवाब सेक्शन === */
+        .main-content-area {
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .meta-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-bottom: 2px; 
+        }
+        
+        .subject-tag {
+            color: #000000; 
+            font-size: 10px; 
+            font-weight: 900; 
+            padding: 4px 10px; 
+            border-radius: 4px; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* डायनामिक थीम कलर्स */
+        .bg-amber { background-color: #f59e0b; }
+        .bg-emerald { background-color: #10b981; }
+        .bg-sky { background-color: #0ea5e9; }
+        
+        .text-amber { color: #fbbf24; }
+        .text-emerald { color: #34d399; }
+        .text-sky { color: #38bdf8; }
+
+        .test-tag { 
+            font-size: 11px; 
+            color: #9ca3af; 
+            font-weight: 600; 
+        }
+
+        .question-text {
+            font-size: 18px; 
+            font-weight: 700; 
+            color: #ffffff; 
+            line-height: 1.4;
+        }
+
+        /* === 5. ऑप्शंस एवं साइड एक्शन बटन्स === */
+        .interactive-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; 
+            width: 100%;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .options-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            width: 82%; 
+        }
+
+        .glass-option, .correct-option { 
+            padding: 14px; 
+            border-radius: 12px; 
+            font-size: 13px; 
+            transition: all 0.2s ease;
+        }
+
+        .glass-option {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            color: #f3f4f6; 
+            font-weight: 500;
+        }
+
+        .correct-option {
+            background: rgba(34, 197, 94, 0.2);
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(34, 197, 94, 0.5); 
+            color: #4ade80; 
+            font-weight: 700;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+        }
+
+        /* साइड एक्शन्स डिब्बा */
+        .side-actions-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;   
+            width: 15%; 
+            padding-top: 2px; 
+        }
+
+        .action-btn { 
+            background: none; 
+            color: white; 
+            text-align: center; 
+            transition: transform 0.15s ease;
+        }
+
+        .action-btn:active {
+            transform: scale(0.9);
+        }
+
+        .action-btn i { 
+            font-size: 24px; 
+            margin-bottom: 2px; 
+            display: block; 
+        }
+        
+        .action-btn span { 
+            font-size: 10px; 
+            font-weight: 700; 
+            display: block; 
+        }
+
+        /* === 6. बॉटम विस्तृत जानकारी सेक्शन === */
+        .bottom-info-box {
+            z-index: 10;
+            width: 82%; 
+            margin-top: 16px;
+        }
+
+        .info-text { 
+            font-size: 12px; 
+            color: #d1d5db; 
+            line-height: 1.5; 
+        }
+        
+        .read-more-btn {
+            background: rgba(255, 255, 255, 0.2); 
+            color: white;
+            padding: 4px 10px; 
+            border-radius: 6px; 
+            font-size: 10px; 
+            font-weight: 700;
+            margin-top: 6px; 
+            transition: background 0.2s ease;
+        }
+
+        .read-more-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* === 7. फुल स्क्रीन एड मॉडल (Ad Modal) === */
+        .modal-overlay {
+            position: fixed; 
+            inset: 0; 
+            z-index: 1000; 
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 0 16px;
+        }
+
+        .modal-overlay.flex-show { 
+            display: flex; 
+        }
+
+        .close-ad-btn {
+            position: absolute; 
+            top: 48px; 
+            right: 24px; 
+            width: 40px; 
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%; 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 16px;
+        }
+
+        .ad-tag {
+            background-color: #1f2937; 
+            color: #9ca3af; 
+            font-size: 10px; 
+            font-weight: 700;
+            padding: 4px 12px; 
+            border-radius: 2px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            margin-bottom: 16px;
+        }
+
+        .ad-card {
+            width: 100%; 
+            max-width: 350px; 
+            height: 300px; 
+            background-color: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 16px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px;
+        }
+
+        .ad-card i { 
+            font-size: 36px; 
+            color: #6b7280; 
+            margin-bottom: 16px; 
+        }
+
+        .ad-title { 
+            font-size: 18px; 
+            font-weight: 700; 
+            color: #e5e7eb; 
+            text-align: center; 
+        }
+
+        .ad-desc { 
+            font-size: 12px; 
+            color: #6b7280; 
+            margin-top: 8px; 
+            text-align: center; 
+            line-height: 1.4;
+        }
+
+        .skip-btn {
+            margin-top: 24px; 
+            background: #ffffff; 
+            color: #000000; 
+            font-weight: 800;
+            padding: 12px 40px; 
+            border-radius: 9999px; 
+            font-size: 14px; 
+        }
+
+        /* Utilities */
+        .line-clamp-2 { 
+            display: -webkit-box; 
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical; 
+            overflow: hidden; 
+        }
+        
+        .icon-shadow { 
+            filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.9)); 
+        }
+        
+        .text-shadow { 
+            text-shadow: 0px 1px 4px rgba(0,0,0,1); 
+        }
+
+        /* === 8. रिस्पॉन्सिव मीडिया क्वेरीज़ === */
+        @media (min-width: 550px) {
+            .reel-item { padding: 160px 24px 35px 24px; gap: 20px; }
+            .question-text { font-size: 20px; }
+            .glass-option, .correct-option { padding: 16px; font-size: 14px; }
+            .action-btn i { font-size: 28px; }
+            .action-btn span { font-size: 11px; }
+            .side-actions-box { gap: 26px; }
+        }
+
+        @media (max-height: 680px) {
+            .reel-item { padding: 90px 12px 20px 12px; gap: 10px; }
+            .main-content-area { gap: 8px; }
+            .question-text { font-size: 16px; }
+            .glass-option, .correct-option { padding: 10px; font-size: 12px; }
+            .side-actions-box { gap: 16px; }
+            .bottom-info-box { margin-top: 8px; }
+        }

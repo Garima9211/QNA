@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>QNA Shorts - Perfect Balanced Layout</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/feed.css">
+ 
+</head>
+<body>
+
+    <!-- मुख्य रील्स कंटेनर -->
+    <main id="reelsContainer" class="reels-container no-scrollbar"></main>
+
+    <!-- विज्ञापन मॉडल -->
+    <div id="adModal" class="modal-overlay">
+        <button onclick="closeAd()" class="close-ad-btn" aria-label="Close Ad">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <span class="ad-tag">Advertisement</span>
+        <div class="ad-card">
+            <i class="fa-brands fa-google"></i>
+            <h3 class="ad-title">Your Sponsored Ad Here</h3>
+            <p class="ad-desc">यह फुल-स्क्रीन विज्ञापन रिवेन्यू जनरेट करेगा। यूज़र इसे देखकर ही पूरी जानकारी पढ़ सकेगा।</p>
+            <button onclick="closeAd()" class="skip-btn">Skip Ad</button>
+        </div>
+    </div>
+
+
+    
+    <!-- JavaScript logic -->
+    <script>
+        const questions = [
+            {
+                subject: "इतिहास", 
+                test: "Test #1000", 
+                color: "amber", 
+                question: "1857 की क्रांति के समय भारत का गवर्नर जनरल कौन था?", 
+                options: ["लॉर्ड डलहौजी", "लॉर्ड कैनिंग", "लॉर्ड कर्जन", "लॉर्ड मिंटो"], 
+                answer: 1, 
+                info: "1857 की क्रांति के समय भारत का गवर्नर जनरल लॉर्ड कैनिंग था। यह विद्रोह 10 मई 1857 को मेरठ से शुरू हुआ था और जल्द ही उत्तर और मध्य भारत के बड़े हिस्सों में फैल गया।"
+            },
+            {
+                subject: "भूगोल", 
+                test: "Test #1002", 
+                color: "emerald", 
+                question: "भारत का सबसे दक्षिणी बिंदु कौन सा है?", 
+                options: ["कन्याकुमारी", "रामेश्वरम", "इंदिरा पॉइंट", "लक्षद्वीप"], 
+                answer: 2, 
+                info: "भारत का सबसे दक्षिणी बिंदु इंदिरा पॉइंट है, जो अंडमान और निकोबार द्वीप समूह के ग्रेट निकोबार द्वीप पर स्थित है।"
+            },
+            {
+                subject: "सामान्य ज्ञान", 
+                test: "Test #1003", 
+                color: "sky", 
+                question: "भारत का राष्ट्रीय पशु कौन है?", 
+                options: ["शेर", "बाघ", "हाथी", "मोर"], 
+                answer: 1, 
+                info: "बाघ भारत का राष्ट्रीय पशु है। इसे 1973 में राष्ट्रीय पशु घोषित किया गया था।"
+            }
+        ];
+
+        const container = document.getElementById("reelsContainer");
+        const adModal = document.getElementById("adModal");
+        let index = 0;
+
+        function optionHTML(q, i) {
+            const correct = i === q.answer;
+            return `
+            <div class="${correct ? 'correct-option' : 'glass-option'}">
+                <span>${String.fromCharCode(65 + i)}. ${q.options[i]}</span>
+                ${correct ? '<i class="fa-solid fa-circle-check icon-shadow"></i>' : ''}
+            </div>`;
+        }
+
+        function reelHTML(q, n) {
+            return `
+            <section class="reel-item">
+                <div class="reel-bg"></div>
+                
+                <div class="main-content-area">
+                    <div class="meta-header">
+                        <span class="subject-tag bg-${q.color}">${q.subject}</span>
+                        <span class="test-tag text-shadow">${q.test}</span>
+                    </div>
+                    <h2 class="question-text text-shadow">${q.question}</h2>
+                    
+                    <div class="interactive-row">
+                        <div class="options-list">
+                            ${q.options.map((_, i) => optionHTML(q, i)).join("")}
+                        </div>
+                        
+                        <div class="side-actions-box">
+                            <button class="action-btn"><i class="fa-solid fa-heart icon-shadow"></i><span>12K</span></button>
+                            <button class="action-btn"><i class="fa-solid fa-bookmark icon-shadow"></i><span>Save</span></button>
+                            <button class="action-btn"><i class="fa-solid fa-share icon-shadow"></i><span>Share</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bottom-info-box">
+                    <p id="context-${n}" class="info-text text-shadow line-clamp-2">
+                        <span class="text-${q.color}" style="font-weight: 700;">विस्तृत जानकारी:</span> ${q.info}
+                    </p>
+                    <button id="btn-${n}" onclick="handleReadMore('context-${n}', 'btn-${n}')" class="read-more-btn">...Read more</button>
+                </div>
+            </section>`;
+        }
+
+        function addQuestion() { 
+            container.insertAdjacentHTML("beforeend", reelHTML(questions[index % questions.length], index)); 
+            index++; 
+        }
+        
+        // प्रारंभिक रील्स लोड करें
+        for (let i = 0; i < questions.length; i++) addQuestion();
+
+        // अनंत स्क्रॉल (Infinite Scroll)
+        container.addEventListener("scroll", () => {
+            if (container.scrollTop + container.clientHeight >= container.scrollHeight - 150) {
+                addQuestion();
+            }
+        });
+
+        let currentTargetText = null;
+        let currentTargetBtn = null;
+        
+        function handleReadMore(textId, btnId) {
+            currentTargetText = textId;
+            currentTargetBtn = btnId;
+            adModal.classList.add("flex-show");
+        }
+        
+        function closeAd() {
+            adModal.classList.remove("flex-show");
+            if (currentTargetText) {
+                document.getElementById(currentTargetText).classList.remove("line-clamp-2");
+                document.getElementById(currentTargetBtn).style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
