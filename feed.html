@@ -3,35 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>QNA Shorts - Perfect Balanced Layout</title>
+    <title>QNA Shorts - Mobile View</title>
     
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS फ़ाइल लिंक -->
     <link rel="stylesheet" href="css/feed.css">
- 
 </head>
 <body>
 
-    <!-- मुख्य रील्स कंटेनर -->
-    <main id="reelsContainer" class="reels-container no-scrollbar"></main>
+    <!-- मुख्य मोबाइल स्क्रीन फ्रेम Container -->
+    <div class="mobile-wrapper">
+        
+        <!-- ऐप हेडर (Header) -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-bolt text-amber"></i> QNA Shorts
+            </div>
+            <div class="header-actions">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button><i class="fa-solid fa-bell"></i></button>
+            </div>
+        </header>
 
-    <!-- विज्ञापन मॉडल -->
-    <div id="adModal" class="modal-overlay">
-        <button onclick="closeAd()" class="close-ad-btn" aria-label="Close Ad">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <span class="ad-tag">Advertisement</span>
-        <div class="ad-card">
-            <i class="fa-brands fa-google"></i>
-            <h3 class="ad-title">Your Sponsored Ad Here</h3>
-            <p class="ad-desc">यह फुल-स्क्रीन विज्ञापन रिवेन्यू जनरेट करेगा। यूज़र इसे देखकर ही पूरी जानकारी पढ़ सकेगा।</p>
-            <button onclick="closeAd()" class="skip-btn">Skip Ad</button>
+        <!-- मुख्य रील्स स्क्रोलिंग एरिया -->
+        <main id="reelsContainer" class="reels-container no-scrollbar"></main>
+
+      <!-- बॉटम नेविगेशन बार (Mobile Bottom Nav) -->
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="feed.html" class="nav-item"><i class="fa-solid fa-compass"></i><span>Feed</span></a>
+            <a href="category.html" class="nav-item"><i class="fa-solid fa-bookmark"></i><span>Test</span></a>
+            <a href="#" class="nav-item"><i class="fa-solid fa-user"></i><span>My profile</span></a>
+        </nav>
+
+        <!-- विज्ञापन मॉडल -->
+        <div id="adModal" class="modal-overlay">
+            <button onclick="closeAd()" class="close-ad-btn" aria-label="Close Ad">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span class="ad-tag">Advertisement</span>
+            <div class="ad-card">
+                <i class="fa-brands fa-google" style="font-size: 2rem; margin-bottom:10px;"></i>
+                <h3 class="ad-title">Your Sponsored Ad Here</h3>
+                <p class="ad-desc">यह फुल-स्क्रीन विज्ञापन रिवेन्यू जनरेट करेगा। यूज़र इसे देखकर ही पूरी जानकारी पढ़ सकेगा।</p>
+                <button onclick="closeAd()" class="skip-btn">Skip Ad</button>
+            </div>
         </div>
+
     </div>
 
-
-    
     <!-- JavaScript logic -->
     <script>
         const questions = [
@@ -116,10 +139,8 @@
             index++; 
         }
         
-        // प्रारंभिक रील्स लोड करें
         for (let i = 0; i < questions.length; i++) addQuestion();
 
-        // अनंत स्क्रॉल (Infinite Scroll)
         container.addEventListener("scroll", () => {
             if (container.scrollTop + container.clientHeight >= container.scrollHeight - 150) {
                 addQuestion();
@@ -143,6 +164,5 @@
             }
         }
     </script>
-
 </body>
 </html>

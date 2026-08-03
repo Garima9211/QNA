@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The QNA Dynamic Tests</title>
+
+    <link rel="stylesheet" href="css/category.css">
+
+</head>
+
+<body> 
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand-wrapper">
+                <div class="brand-icon">Q</div>
+                <h1 class="brand-title">
+                    The <span>QNA</span>
+                </h1>
+            </div>
+
+            <div class="header-right">
+                <p class="history-title">History</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+
+        <!-- Filters -->
+        <div class="filters-wrapper">
+            <div class="mobile-filter-container" id="mobileFilters"></div>
+        </div>
+
+        <!-- Tests Container -->
+        <div id="tests" class="tests-grid"></div>
+
+    </div>
+
+<script>
+const sampleOptions = [
+  "A. बहादुर शाह जफर",
+  "B. रानी लक्ष्मीबाई",
+  "C. कुंवर सिंह",
+  "D. तात्या टोपे"
+];
+
+const data = [];
+for(let i=1000; i>=986; i--) { 
+ data.push({
+   id: i,
+   question: "1857 की क्रांति का नेतृत्व किसने किया?",
+   options: [...sampleOptions]
+ });
+}
+
+const box = document.getElementById("tests");
+const filterContainer = document.getElementById('mobileFilters');
+
+const filterRanges = [
+  "1-50", 
+  "51-100", 
+  "101-150", 
+  "151-200", 
+  "201-250", 
+  "251-300", 
+  "301-350", 
+  "351-400",
+  "401-450",
+  "451-500"
+];
+
+function initFilters() {
+    filterContainer.innerHTML = ''; 
+    
+    filterRanges.forEach((range, idx) => {
+        const btn = document.createElement('div');
+        btn.className = idx === 0 ? 'filter-box active' : 'filter-box';
+        btn.innerText = range;
+        
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-box').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            if (range === "📑 सभी टेस्ट") {
+                renderTests(data);
+            } else {
+                const parts = range.split('-');
+                const min = parseInt(parts[0]);
+                const max = parseInt(parts[1]);
+                
+                const filteredData = data.filter(test => test.id >= min && test.id <= max);
+                renderTests(filteredData);
+            }
+        });
+        
+        filterContainer.appendChild(btn);
+    });
+}
+
+function renderTests(testsToShow) {
+    box.innerHTML = ""; 
+    
+    if(testsToShow.length === 0) {
+        box.innerHTML = `<p class="empty-msg">इस रेंज में कोई टेस्ट उपलब्ध नहीं है।</p>`;
+        return;
+    }
+
+    testsToShow.forEach(test => {
+        const card = document.createElement("div");
+        card.className = "test-card";
+
+        card.innerHTML = `
+        <div>
+            <div class="card-header">
+                <span class="unlocked-badge">Unlocked</span>
+                <span class="test-id">टेस्ट #${test.id}</span>
+            </div>
+
+            <div class="question-box">
+                <p class="question-title">Q1: ${test.question}</p>
+                <div class="options-grid options"></div>
+            </div>
+        </div>
+
+        <a href="upi.html" class="continue-btn">
+            टेस्ट जारी रखें
+        </a>
+        `;
+
+        const optBox = card.querySelector(".options");
+
+        test.options.forEach(op => {
+            const div = document.createElement("div");
+            div.className = "option-item";
+            div.textContent = op;
+
+            div.onclick = function() {
+                optBox.querySelectorAll("div").forEach(x => {
+                    x.className = "option-item";
+                });
+                this.className = "option-item selected";
+            };
+
+            optBox.appendChild(div);
+        });
+
+        box.appendChild(card);
+    });
+}
+
+initFilters();
+renderTests(data);
+</script>
+</body>
+</html>
