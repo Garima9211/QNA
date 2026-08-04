@@ -535,8 +535,9 @@
     height: 80px;
     object-fit: contain; /* Puri image dikhegi */
 }
-/*Feed.css*/
-/* रिसेट और ग्लोबल स्टाइलिंग */
+/* ==========================================
+   GLOBAL RESET & VARIABLES
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -545,47 +546,137 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+    --bg-dark: #090d16;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --accent-amber: #f59e0b;
+    --accent-green: #10b981;
+    --green-bg: rgba(16, 185, 129, 0.12);
+    --header-height: 60px;
+    --nav-height: 65px;
+}
+
 body {
-    background-color: #0b0f19; /* डेस्कटॉप बैकग्राउंड */
-    color: #fff;
+    background-color: #030712;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
+    color: var(--text-primary);
 }
 
-/* मोबाइल ऐप फ्रेम (Mobile Screen Wrapper) */
+/* ==========================================
+   MOBILE WRAPPER (CENTERED APP VIEW)
+   ========================================== */
 .mobile-wrapper {
     width: 100%;
-    max-width: 430px; /* असली मोबाइल स्क्रीन चौड़ाई */
+    max-width: 450px;
     height: 100vh;
     height: 100dvh;
-    background-color: #000;
+    background-color: var(--bg-dark);
     position: relative;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* डेस्कटॉप पर यह एक फ़ोन स्क्रीन की तरह दिखेगा */
-@media (min-width: 480px) {
-    .mobile-wrapper {
-        height: 880px;
-        max-height: 92vh;
-        border-radius: 36px;
-        border: 10px solid #1e293b;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    }
+/* ==========================================
+   HEADER & FOOTER COLOR VARIABLES
+   ========================================== */
+:root {
+    --bg-dark: #0b0f19;
+    --header-bg: rgba(11, 15, 25, 0.95);
+    --logo-purple: #7c3aed;
+    --purple-text: #a855f7;
+    --active-cyan: #06b6d4;
+    --inactive-gray: #64748b;
+    --header-height: 60px;
+    --nav-height: 65px;
 }
 
-
-/* मुख्य रील्स स्क्रॉलर */
-.reels-container {
-    height: 100%;
+/* ==========================================
+   APP HEADER (Exact Match with Image)
+   ========================================== */
+.app-header {
+    height: var(--header-height);
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 50;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Purple Square Logo Icon */
+.logo-icon {
+    width: 34px;
+    height: 34px;
+    background-color: var(--logo-purple);
+    color: #ffffff;
+    font-weight: 800;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+}
+
+.logo-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+}
+
+.logo-title span {
+    color: var(--purple-text);
+}
+
+/* Round Dark Profile Button */
+.header-actions .icon-btn {
+    background: #1e293b;
+    border: none;
+    color: #94a3b8;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   REELS / CONTAINER AREA
+   ========================================== */
+.reels-container {
+    flex: 1;
+    margin-top: var(--header-height);
+    margin-bottom: var(--nav-height);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -596,64 +687,57 @@ body {
     scrollbar-width: none;
 }
 
-/* सिंगल रील आइटम */
+/* Reel Item Layout */
 .reel-item {
-    height: 100%;
-    width: 100%;
+    height: calc(100vh - var(--header-height) - var(--nav-height));
+    height: calc(100dvh - var(--header-height) - var(--nav-height));
     scroll-snap-align: start;
-    position: relative;
+    padding: 20px 16px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 70px 15px 75px 15px; /* हेडर और नेविगेशन के लिए पैडिंग */
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.reel-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, #181926 0%, #0c0d14 100%);
-    z-index: -1;
-}
-
-/* कंटेंट और ऑप्शंस */
-.main-content-area {
-    margin-bottom: 12px;
-}
-
+/* Header Tags Inside Reel */
 .meta-header {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 12px;
 }
 
 .subject-tag {
-    padding: 4px 10px;
-    border-radius: 20px;
+    background-color: var(--accent-amber);
+    color: #000;
+    font-weight: 800;
     font-size: 0.75rem;
-    font-weight: 700;
-    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .test-tag {
+    color: var(--text-secondary);
     font-size: 0.85rem;
-    color: #cbd5e1;
     font-weight: 600;
-    align-self: center;
 }
 
+/* Question Text */
 .question-text {
     font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.35;
-    margin-bottom: 15px;
+    font-weight: 800;
+    line-height: 1.4;
+    color: var(--text-primary);
+    margin-bottom: 20px;
 }
 
+/* Dynamic Interactive Area Grid/Flex */
 .interactive-row {
     display: flex;
-    justify-content: space-between;
+    gap: 12px;
     align-items: flex-end;
 }
 
@@ -662,43 +746,51 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding-right: 12px;
 }
 
+/* Option Card Designs */
 .glass-option, .correct-option {
-    padding: 10px 12px;
+    padding: 14px 16px;
     border-radius: 12px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(8px);
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .glass-option {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
 }
 
 .correct-option {
-    background: rgba(16, 185, 129, 0.18);
-    border: 1px solid #10b981;
-    color: #10b981;
+    background-color: var(--green-bg);
+    border: 1.5px solid var(--accent-green);
+    color: var(--accent-green);
 }
 
-/* साइड एक्शन बटन्स (Like, Save, Share) */
+.correct-option i {
+    font-size: 1.1rem;
+    color: var(--accent-green);
+}
+
+/* Side Action Buttons */
 .side-actions-box {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     align-items: center;
+    gap: 18px;
+    padding-bottom: 4px;
 }
 
 .action-btn {
     background: transparent;
     border: none;
-    color: #fff;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -707,23 +799,32 @@ body {
 }
 
 .action-btn i {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .action-btn span {
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #e2e8f0;
 }
 
-/* बॉटम इन्फो एरिया */
+/* Bottom Info Section */
 .bottom-info-box {
-    margin-top: 5px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .info-text {
     font-size: 0.85rem;
+    color: #cbd5e1;
     line-height: 1.4;
-    color: #e2e8f0;
+}
+
+.info-highlight {
+    color: var(--accent-amber);
+    font-weight: 800;
 }
 
 .line-clamp-2 {
@@ -734,135 +835,187 @@ body {
 }
 
 .read-more-btn {
-    background: transparent;
+    background-color: #334155;
+    color: #ffffff;
     border: none;
-    color: #94a3b8;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
     font-weight: 700;
-    margin-top: 4px;
+    margin-top: 8px;
     cursor: pointer;
-    font-size: 0.8rem;
 }
 
-/* बॉटम नेविगेशन बार (Mobile Bottom Nav) */
+/* ==========================================
+   BOTTOM NAVIGATION STYLING
+   ========================================== */
 .bottom-nav {
+    height: var(--nav-height);
+    background-color: var(--bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60px;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     z-index: 50;
 }
 
+.nav-inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    padding: 0 8px;
+}
+
 .nav-item {
-    background: transparent;
-    border: none;
-    color: #64748b;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--inactive-gray);
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
     gap: 3px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    font-weight: 600;
+    position: relative;
+    width: 20%;
 }
 
 .nav-item i {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
+/* Active State (Home Tab) */
 .nav-item.active {
-    color: #38bdf8;
+    color: var(--active-cyan);
 }
 
-/* विज्ञापन मॉडल (Ad Overlay) */
-.modal-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(8px);
-    display: none;
+.nav-label {
+    font-size: 0.62rem;
+}
+
+.active-dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--active-cyan);
+    border-radius: 50%;
+    margin-top: 1px;
+}
+
+/* Floating Plus Button (+) */
+.fab-wrapper {
+    position: relative;
+    top: -16px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    width: 20%;
+}
+
+.pro-fab {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.3rem;
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.pro-fab:active {
+    transform: scale(0.92);
+}
+
+/* ==========================================
+   ADVERTISEMENT MODAL
+   ========================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
     z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .modal-overlay.flex-show {
     display: flex;
 }
 
+.ad-modal-content {
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .close-ad-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(255,255,255,0.15);
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     color: #fff;
-    width: 32px; height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    font-size: 1.1rem;
     cursor: pointer;
 }
 
 .ad-tag {
-    position: absolute;
-    top: 18px;
-    left: 15px;
-    background: #f59e0b;
+    font-size: 0.65rem;
+    background: var(--accent-amber);
     color: #000;
     padding: 2px 8px;
     border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
-.ad-card {
-    background: #1e293b;
-    padding: 25px;
-    border-radius: 16px;
-    text-align: center;
-    width: 85%;
-    border: 1px solid rgba(255,255,255,0.1);
+.ad-icon {
+    font-size: 2.2rem;
+    margin: 15px 0 10px;
+    color: #fff;
 }
 
 .ad-title {
-    margin-bottom: 8px;
     font-size: 1.1rem;
+    margin-bottom: 8px;
 }
 
 .ad-desc {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    margin-bottom: 18px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.4;
 }
 
 .skip-btn {
-    background: #0ea5e9;
-    color: #fff;
+    background: var(--accent-amber);
     border: none;
-    padding: 10px;
+    color: #000;
+    font-weight: 700;
+    padding: 8px 20px;
     border-radius: 8px;
-    font-weight: 600;
     cursor: pointer;
     width: 100%;
 }
-
-/* कलर क्लासेस */
-.bg-amber { background-color: #f59e0b; }
-.bg-emerald { background-color: #10b981; }
-.bg-sky { background-color: #0ea5e9; }
-
-.text-amber { color: #f59e0b; }
-.text-emerald { color: #10b981; }
-.text-sky { color: #0ea5e9; }
-
-.text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.6); }
-.icon-shadow { filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); }
 /*CATERGORY.CSS*/
 
 
