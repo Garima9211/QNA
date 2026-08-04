@@ -120,3 +120,24 @@ function closeAd() {
 function openProfile() {
     alert("Profile opening...");
 }
+    function startTest() {
+            const name = document.getElementById("name").value.trim();
+            const mobile = document.getElementById("mobile").value.trim();
+
+            if (!name) {
+                alert("कृपया अपना नाम दर्ज करें");
+                return;
+            }
+
+            if (!/^[6-9]\d{9}$/.test(mobile)) {
+                alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें");
+                return;
+            }
+
+            // User data save
+            localStorage.setItem("userName", name);
+            localStorage.setItem("userMobile", mobile);
+
+            // Open next page
+            window.location.href = "afterclick_test_Start.HTML";
+        }

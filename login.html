@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The QNA - Login</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+
+        <h1 class="logo-title">
+            The QNA
+        </h1>
+
+        <p class="subtitle">
+            टेस्ट शुरू करने के लिए नाम और मोबाइल नंबर दर्ज करें
+        </p>
+
+        <input 
+            type="text" 
+            id="name" 
+            placeholder="अपना नाम लिखें" 
+            class="input-field mb-4"
+        >
+
+        <input 
+            type="tel" 
+            id="mobile" 
+            placeholder="10 अंकों का मोबाइल नंबर" 
+            maxlength="10" 
+            class="input-field mb-6"
+        >
+
+        <button onclick="startTest()" class="btn-primary">
+            टेस्ट शुरू करें
+        </button>
+
+    </div>
+
+    
+    <!-- JavaScript File -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
