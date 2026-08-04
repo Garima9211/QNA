@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,70 +6,11 @@
 }
 
 body {
-    background-color: #f9fafb;
+    background-color: #000;
     color: #111827;
-}
+} */
 
-/* Header Styles */
-.app-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 50;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #e5e7eb;
-}
 
-.header-container {
-    width: 100%;
-    padding: 1rem 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.brand-icon {
-    width: 2rem;
-    height: 2rem;
-    background-color: #2563eb;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-weight: 900;
-    font-size: 0.875rem;
-}
-
-.brand-title {
-    font-size: 1.25rem;
-    font-weight: 900;
-    color: #000000;
-    letter-spacing: 0.025em;
-}
-
-.brand-title span {
-    color: #2563eb;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.history-title {
-    font-weight: 900;
-    font-size: 1.25rem;
-}
 
 /* Page Container */
 .main-container {

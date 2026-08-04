@@ -535,3 +535,336 @@
     height: 80px;
     object-fit: contain; /* Puri image dikhegi */
 }
+/*Feed.css*/
+/* रिसेट और ग्लोबल स्टाइलिंग */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: #0b0f19; /* डेस्कटॉप बैकग्राउंड */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* मोबाइल ऐप फ्रेम (Mobile Screen Wrapper) */
+.mobile-wrapper {
+    width: 100%;
+    max-width: 430px; /* असली मोबाइल स्क्रीन चौड़ाई */
+    height: 100vh;
+    height: 100dvh;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* डेस्कटॉप पर यह एक फ़ोन स्क्रीन की तरह दिखेगा */
+@media (min-width: 480px) {
+    .mobile-wrapper {
+        height: 880px;
+        max-height: 92vh;
+        border-radius: 36px;
+        border: 10px solid #1e293b;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+}
+
+
+/* मुख्य रील्स स्क्रॉलर */
+.reels-container {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* सिंगल रील आइटम */
+.reel-item {
+    height: 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 70px 15px 75px 15px; /* हेडर और नेविगेशन के लिए पैडिंग */
+}
+
+.reel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #181926 0%, #0c0d14 100%);
+    z-index: -1;
+}
+
+/* कंटेंट और ऑप्शंस */
+.main-content-area {
+    margin-bottom: 12px;
+}
+
+.meta-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.subject-tag {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.test-tag {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    font-weight: 600;
+    align-self: center;
+}
+
+.question-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 15px;
+}
+
+.interactive-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.options-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 12px;
+}
+
+.glass-option, .correct-option {
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+
+.glass-option {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.correct-option {
+    background: rgba(16, 185, 129, 0.18);
+    border: 1px solid #10b981;
+    color: #10b981;
+}
+
+/* साइड एक्शन बटन्स (Like, Save, Share) */
+.side-actions-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.action-btn i {
+    font-size: 1.5rem;
+}
+
+.action-btn span {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* बॉटम इन्फो एरिया */
+.bottom-info-box {
+    margin-top: 5px;
+}
+
+.info-text {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #e2e8f0;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-weight: 700;
+    margin-top: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* बॉटम नेविगेशन बार (Mobile Bottom Nav) */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 50;
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+}
+
+.nav-item.active {
+    color: #38bdf8;
+}
+
+/* विज्ञापन मॉडल (Ad Overlay) */
+.modal-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-overlay.flex-show {
+    display: flex;
+}
+
+.close-ad-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.ad-tag {
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    background: #f59e0b;
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.ad-card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    width: 85%;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.ad-title {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.ad-desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 18px;
+}
+
+.skip-btn {
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* कलर क्लासेस */
+.bg-amber { background-color: #f59e0b; }
+.bg-emerald { background-color: #10b981; }
+.bg-sky { background-color: #0ea5e9; }
+
+.text-amber { color: #f59e0b; }
+.text-emerald { color: #10b981; }
+.text-sky { color: #0ea5e9; }
+
+.text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.6); }
+.icon-shadow { filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); }
+/*CATERGORY.CSS*/
+
+
+
+

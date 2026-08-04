@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- CSS फ़ाइल लिंक -->
-    <link rel="stylesheet" href="css/feed.css">
+    <!-- <link rel="stylesheet" href="css/feed.css"> -->
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
 
@@ -18,26 +19,63 @@
     <div class="mobile-wrapper">
         
         <!-- ऐप हेडर (Header) -->
-        <header class="app-header">
-            <div class="logo">
-                <i class="fa-solid fa-bolt text-amber"></i> QNA Shorts
-            </div>
-            <div class="header-actions">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button><i class="fa-solid fa-bell"></i></button>
-            </div>
-        </header>
+     <header>
+    <div class="app-container header-inner">
+
+        <div class="logo-box">
+            <div class="logo-icon">Q</div>
+            <h1 class="logo-title">The <span>QNA</span></h1>
+        </div>
+
+      <div class="header-actions">
+         <button class="icon-btn" onclick="openProfile()" aria-label="Profile">
+                  <i class="fa-regular fa-user"></i>
+             </button>
+        </div>
+
+    </div>
+</header>
 
         <!-- मुख्य रील्स स्क्रोलिंग एरिया -->
         <main id="reelsContainer" class="reels-container no-scrollbar"></main>
 
       <!-- बॉटम नेविगेशन बार (Mobile Bottom Nav) -->
-        <nav class="bottom-nav">
+        <!-- <nav class="bottom-nav">
             <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i><span>Home</span></a>
             <a href="feed.html" class="nav-item"><i class="fa-solid fa-compass"></i><span>Feed</span></a>
             <a href="category.html" class="nav-item"><i class="fa-solid fa-bookmark"></i><span>Test</span></a>
             <a href="#" class="nav-item"><i class="fa-solid fa-user"></i><span>My profile</span></a>
-        </nav>
+        </nav> -->
+        <nav>
+        <div class="app-container nav-inner">
+            <a href="./index.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span class="nav-label nav-label-active">Home</span>
+                <div class="active-dot"></div>
+            </a>
+
+            <a href="./feed.html" class="nav-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="nav-label">Feed</span>
+            </a>
+
+            <div class="fab-wrapper">
+                <a href="./add-question2.html" aria-label="Add Question" class="pro-fab">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
+
+            <a href="./category.html" class="nav-item">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="nav-label">Test</span>
+            </a>
+
+            <a href="#" onclick="openProfile()" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span class="nav-label">My Profile</span>
+            </a>
+        </div>
+    </nav>
 
         <!-- विज्ञापन मॉडल -->
         <div id="adModal" class="modal-overlay">
