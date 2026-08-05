@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govt Jobs GK रील्स मंच - The QNA</title>
+    <meta name="description" content="The QNA पर सरकारी नौकरियों के लिए महत्वपूर्ण GK और करंट अफेयर्स के सवाल नए रील्स अंदाज में सीखें।">
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+
+<body>
+
+      <!-- === 1. टॉप हेडर === -->
+ <header>
+    <div class="app-container header-inner">
+
+        <div class="logo-box">
+            <div class="logo-icon">Q</div>
+            <h1 class="logo-title">The <span>QNA</span></h1>
+        </div>
+
+      <div class="header-actions">
+         <button class="icon-btn" onclick="openProfile()" aria-label="Profile">
+                  <i class="fa-regular fa-user"></i>
+             </button>
+        </div>
+
+    </div>
+</header>
+
+        <main id="reels-wrapper" class="reels-container">
+        </main>
+
+        <div id="explanation-sheet" class="bottom-sheet">
+            <div class="sheet-handle" onclick="closeExplanation()"></div>
+            <div class="sheet-header">
+                <h3 class="sheet-title">📖 उत्तर का प्रामाणिक संदर्भ (Context)</h3>
+                <button onclick="closeExplanation()" class="close-btn">बंद करें</button>
+            </div>
+            <div id="explanation-text" class="sheet-body"></div>
+        </div>
+
+        <div id="sheet-overlay" class="overlay hidden" onclick="closeExplanation()"></div>
+
+    </div>
+
+    <script>
+        // GK क्वेश्चन बैंक
+        const gkQuestionBank = [
+            { 
+                id: 1, 
+                q: "भारतीय संविधान का जनक किसे कहा जाता है?", 
+                a: "डॉ. बी.आर. अम्बेडकर", b: "महात्मा गांधी", c: "जवाहरलाल नेहरू", d: "डॉ. राजेन्द्र प्रसाद", 
+                correct: "A", exam: "UPPCS", year: "2024", likes: 245, views: "1.2K",
+                context: "डॉ. भीमराव अम्बेडकर को भारतीय संविधान का जनक और निर्माता कहा जाता है क्योंकि वह संविधान का मसौदा तैयार करने वाली 'प्रारूप समिति' (Drafting Committee) के अध्यक्ष थे। उन्होंने दुनिया भर के विभिन्न संविधानों का गहरा अध्ययन किया और भारतीय समाज की विविधताओं और अधिकारों को ध्यान में रखते हुए एक मजबूत ढांचा तैयार किया। संविधान सभा में उनकी अद्वितीय भूमिका और कानूनी समझ के कारण ही उन्हें यह गौरवशाली स्थान प्राप्त हुआ है।"
+            },
+            { 
+                id: 2, 
+                q: "भारत में किस राज्य की तटरेखा (Coastline) सबसे लंबी है?", 
+                a: "महाराष्ट्र", b: "तमिलनाडु", c: "गुजरात", d: "आंध्र प्रदेश", 
+                correct: "C", exam: "SSC CGL", year: "2023", likes: 189, views: "940",
+                context: "भारत की मुख्य भूमि की कुल तटरेखा लगभग 5422 किलोमीटर लंबी है, जिसमें अकेले गुजरात राज्य की तटरेखा सबसे लंबी है, जिसकी कुल लंबाई लगभग 1214.7 किलोमीटर है। गुजरात के बाद दूसरे स्थान पर आंध्र प्रदेश आता है। गुजरात की भौगोलिक स्थिति ऐसी है कि इसमें कच्छ और खंभात की खाड़ियां शामिल हैं, जिससे इसकी तटीय सीमा अत्यधिक घुमावदार और लंबी हो जाती है।"
+            }
+        ];
+
+        const wrapper = document.getElementById('reels-wrapper');
+        let activeTimers = {};
+
+        // रील कार्ड HTML जनरेटर
+        function createQuestionReelHTML(item, index) {
+            return `
+                <div id="reel-${index}" class="reel-section" data-correct="${item.correct}" data-index="${index}">
+                    
+                    <div class="reel-top-bar">
+                        <div class="reel-meta">
+                            <span>सवाल नंबर: #0${index + 1}</span>
+                            <span class="timer-badge">
+                                ⏱️ <span class="timer-text">30</span>s
+                            </span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="timer-bar bg-blue"></div>
+                        </div>
+                    </div>
+
+                    <div class="reel-content">
+                        <div>
+                            <h2 class="question-title">${item.q}</h2>
+                            <div class="exam-tag-wrapper">
+                                <span class="exam-tag">📋 ${item.exam} (${item.year})</span>
+                            </div>
+                        </div>
+
+                        <div class="options-group">
+                            <button onclick="checkAnswer(this, 'A')" class="option-btn">
+                                <span class="option-badge">A</span>
+                                <span>${item.a}</span>
+                            </button>
+                            <button onclick="checkAnswer(this, 'B')" class="option-btn">
+                                <span class="option-badge">B</span>
+                                <span>${item.b}</span>
+                            </button>
+                            <button onclick="checkAnswer(this, 'C')" class="option-btn">
+                                <span class="option-badge">C</span>
+                                <span>${item.c}</span>
+                            </button>
+                            <button onclick="checkAnswer(this, 'D')" class="option-btn">
+                                <span class="option-badge">D</span>
+                                <span>${item.d}</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="reel-footer">
+                        <div class="answer-box hidden">
+                            <span class="answer-text">सही उत्तर: Option (${item.correct})</span>
+                            <button onclick="openExplanation(${index})" class="explanation-btn">
+                                <span>विस्तृत व्याख्या पढ़ें 📖</span>
+                            </button>
+                        </div>
+
+                        <div class="actions-bar">
+                            <div class="metrics-pill">
+                                <button onclick="toggleLike(this)" class="action-btn-inline">
+                                    <span class="heart-icon">🤍</span> <span><span class="like-count">${item.likes}</span></span>
+                                </button>
+                                <span style="color: #374151;">|</span>
+                                <div class="action-btn-inline">
+                                    <span>👁️</span> <span>${item.views}</span>
+                                </div>
+                            </div>
+                            <button onclick="reportQuestionError(${item.id})" class="report-btn">
+                                <span>🚨</span> <span>रिपोर्ट</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // फुल स्क्रीन एड्स लेआउट
+        function createFullScreenAdHTML() {
+            return `
+                <div class="reel-section ad-section">
+                    <span class="ad-label">Sponsored Advertisement</span>
+                    <div class="ad-box">
+                        <div class="ad-icon">AD</div>
+                        <h3 class="ad-heading">Google AdSense Full-Display</h3>
+                        <p class="ad-subtext">High CPM Interstitial Full-Screen Ad Slot.</p>
+                    </div>
+                    <div class="ad-scroll-notice">⬇️ आगे बढ़ने के लिए स्क्रॉल करें</div>
+                </div>
+            `;
+        }
+
+        // व्याख्या मोडल लॉजिक
+        function openExplanation(originalIndex) {
+            const itemIndex = originalIndex % gkQuestionBank.length;
+            const item = gkQuestionBank[itemIndex];
+            document.getElementById('explanation-text').innerText = item.context;
+            document.getElementById('sheet-overlay').classList.remove('hidden');
+            document.getElementById('explanation-sheet').classList.add('open');
+        }
+
+        function closeExplanation() {
+            document.getElementById('sheet-overlay').classList.add('hidden');
+            document.getElementById('explanation-sheet').classList.remove('open');
+        }
+
+        function reportQuestionError(questionId) {
+            alert(`⚠️ अलर्ट:\n\nसवाल संख्या #${questionId} की रिपोर्ट दर्ज कर ली गई है।`);
+        }
+
+        function checkAnswer(selectedBtn, selectedOption) {
+            const reel = selectedBtn.closest('.reel-section');
+            const correctOption = reel.getAttribute('data-correct');
+            const optionsGroup = reel.querySelector('.options-group');
+            const allButtons = optionsGroup.querySelectorAll('.option-btn');
+            
+            const reelIndex = reel.getAttribute('data-index');
+            clearInterval(activeTimers[reelIndex]);
+
+            allButtons.forEach(btn => btn.disabled = true);
+            allButtons.forEach(btn => {
+                const optionLetter = btn.querySelector('.option-badge').innerText;
+                if (optionLetter === correctOption) {
+                    btn.classList.add('btn-correct');
+                } else if (optionLetter === selectedOption && selectedOption !== correctOption) {
+                    btn.classList.add('btn-incorrect');
+                }
+            });
+            reel.querySelector('.answer-box').classList.remove('hidden');
+        }
+
+        function startTimerForReel(reelElement, index) {
+            let timeLeft = 30;
+            const timerText = reelElement.querySelector('.timer-text');
+            const timerBar = reelElement.querySelector('.timer-bar');
+            if(activeTimers[index]) clearInterval(activeTimers[index]);
+            
+            timerBar.classList.remove('bg-red');
+            timerBar.classList.add('bg-blue');
+            timerBar.style.width = '100%';
+
+            activeTimers[index] = setInterval(() => {
+                timeLeft--;
+                if(timerText) timerText.innerText = timeLeft;
+                let percentage = (timeLeft / 30) * 100;
+                if(timerBar) timerBar.style.width = percentage + '%';
+
+                if (timeLeft <= 5 && timerBar) {
+                    timerBar.classList.remove('bg-blue');
+                    timerBar.classList.add('bg-red');
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(activeTimers[index]);
+                    const correctOption = reelElement.getAttribute('data-correct');
+                    const firstCorrectBtn = Array.from(reelElement.querySelectorAll('.option-btn')).find(btn => btn.querySelector('.option-badge').innerText === correctOption);
+                    if(firstCorrectBtn) checkAnswer(firstCorrectBtn, null);
+                }
+            }, 1000);
+        }
+
+        function initScrollObserver() {
+            const observerOptions = { root: wrapper, threshold: 0.6 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const reelIndex = entry.target.getAttribute('data-index');
+                        if (reelIndex !== null) {
+                            startTimerForReel(entry.target, reelIndex);
+                        }
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.reel-section[data-index]').forEach(reel => {
+                observer.observe(reel);
+            });
+        }
+
+        function renderReelsEngine() {
+            let combinedHTML = "";
+            let totalQuestions = 0;
+            for (let loop = 0; loop < 5; loop++) {
+                gkQuestionBank.forEach((item) => {
+                    combinedHTML += createQuestionReelHTML(item, totalQuestions);
+                    totalQuestions++;
+                    if (totalQuestions % 10 === 0) combinedHTML += createFullScreenAdHTML();
+                });
+            }
+            wrapper.innerHTML = combinedHTML;
+            setTimeout(initScrollObserver, 100);
+        }
+
+        function toggleLike(btn) {
+            const heartIcon = btn.querySelector('.heart-icon');
+            const countSpan = btn.querySelector('.like-count');
+            let currentCount = parseInt(countSpan.innerText);
+            if (heartIcon.innerText === '🤍') {
+                heartIcon.innerText = '❤️'; 
+                countSpan.innerText = currentCount + 1; 
+                btn.classList.add('liked');
+            } else {
+                heartIcon.innerText = '🤍'; 
+                countSpan.innerText = currentCount - 1; 
+                btn.classList.remove('liked');
+            }
+        }
+
+        renderReelsEngine();
+    </script>
+</body>
+</html>
