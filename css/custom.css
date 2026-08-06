@@ -2430,13 +2430,13 @@ html {
     background: linear-gradient(90deg, #6B2FBF, #818cf8);
 }
 
-.reel-top-bar {
+/* .reel-top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
     font-size: 0.9rem;
-}
+} */
 
 .category-tag {
     background: rgba(255, 255, 255, 0.1);
