@@ -2641,3 +2641,81 @@ html {
     transform: scale(1.1);
 }
 <!--CURRENT AFFAIRS CSS-->
+body {
+            /* Image ke jaisa dark background */
+            background-color: #0b1120;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        /* Scrolling Container */
+        .months-scroll-container {
+            display: flex;
+            gap: 24px; /* Boxes ke beech ka gap */
+            overflow-x: auto; /* Horizontal scroll enable karta hai */
+            padding-bottom: 15px; 
+            
+            /* Scrollbar hide karne ke liye (Optional but looks clean) */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .months-scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        /* Individual Card/Link */
+        .month-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none; /* Link ki underline hatane ke liye */
+            min-width: max-content;
+        }
+
+        /* Icon wala Box jisme ab Month aayega */
+        .month-box {
+            width: 80px;
+            height: 80px;
+            background-color: #1e293b; /* Dark grey-blue box */
+            border-radius: 22px; /* Rounded corners */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        /* Hover effect */
+        .month-card:hover .month-box {
+            transform: translateY(-5px);
+            background-color: #27354c;
+        }
+
+        /* Niche likha hua text */
+        .month-label {
+            color: #94a3b8; /* Light grey text */
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .month-card:hover .month-label {
+            color: #ffffff; /* Hover par text white ho jayega */
+        }
+
+        /* Different Colors for different months (Image wale icons ki tarah) */
+        .m-jan { color: #f59e0b; } /* Orange */
+        .m-feb { color: #10b981; } /* Green */
+        .m-mar { color: #0ea5e9; } /* Light Blue */
+        .m-apr { color: #c084fc; } /* Purple */
+        .m-may { color: #818cf8; } /* Indigo */
+        .m-jun { color: #f43f5e; } /* Rose */
+        .m-jul { color: #f59e0b; }
+        .m-aug { color: #10b981; }
+        .m-sep { color: #0ea5e9; }
+        .m-oct { color: #c084fc; }
+        .m-nov { color: #818cf8; }
+        .m-dec { color: #f43f5e; }
