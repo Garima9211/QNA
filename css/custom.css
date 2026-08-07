@@ -1282,14 +1282,13 @@ body {
     width: 100%;
 }
 /*GK_CATEGORY.CSS*/
+-----------------------
 /* Main Layout */
 .main-container {
     max-width: 72rem; /* 1152px */
     margin: 100px auto;
-    
+    padding: 0 1rem; /* साइड में थोड़ा स्पेस देने के लिए */
 }
-
-
 
 /* Grid Layout */
 .category-grid {
@@ -1320,10 +1319,9 @@ body {
     border-radius: 1rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.2s ease;
-    width: 12.5rem;
+    width: 100%; /* यहाँ 12.5rem हटाकर 100% कर दिया है */
+    box-sizing: border-box; /* पैडिंग को चौड़ाई के अंदर रखने के लिए */
 }
-
-
 
 .category-card:hover {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -1356,7 +1354,7 @@ body {
 }
 
 .btn-test {
-    margin-top: 0.5rem;
+    margin-top: auto; /* बटन हमेशा कार्ड के नीचे रहेगा */
     width: 100%;
     text-align: center;
     background-color: #9361ea;
@@ -1372,6 +1370,7 @@ body {
 .btn-test:hover {
     background-color: #7C3AED;
 }
+i
 /* Category Icon Background Colors */
 .icon-amber { background-color: #fef3c7; }
 .icon-emerald { background-color: #d1fae5; }
@@ -1384,6 +1383,7 @@ body {
 .icon-indigo { background-color: #e0e7ff; }
 .icon-pink { background-color: #fce7f3; }
 /*LOGIN.CSS*/
+---------------------------
        :root {
             --bg-dark: #0B0F19;
             --accent: #6B2FBF;
@@ -1505,7 +1505,7 @@ body {
     background-color: #0b0f19; /* डेस्कटॉप बैकग्राउंड कलर */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     min-height: 100vh;
 }
 
@@ -2466,7 +2466,7 @@ html {
     gap: 10px;
 }
 
-.option-btn {
+/* .option-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 12px 15px;
@@ -2478,7 +2478,7 @@ html {
     font-size: 1.05rem;
     font-weight: 500;
     transition: all 0.2s ease;
-}
+} */
 
 .option-btn:hover {
     background: rgba(255, 255, 255, 0.1);

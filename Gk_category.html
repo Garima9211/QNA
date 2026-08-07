@@ -1,49 +1,38 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>The QNA - Home</title>
-
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0B0F19">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/custom.css">
-    
-
 </head>
-        <!-- === 1. टॉप हेडर === -->
- <header>
-    <div class="app-container header-inner">
-
-        <div class="logo-box">
-            <div class="logo-icon">Q</div>
-            <h1 class="logo-title">The <span>QNA</span></h1>
+<body>
+    <!-- === 1. टॉप हेडर === -->
+    <header>
+        <div class="app-container header-inner">
+            <div class="logo-box">
+                <div class="logo-icon">Q</div>
+                <h1 class="logo-title">The <span>QNA</span></h1>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="openProfile()" aria-label="Profile">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+            </div>
         </div>
+    </header>
 
-      <div class="header-actions">
-         <button class="icon-btn" onclick="openProfile()" aria-label="Profile">
-                  <i class="fa-regular fa-user"></i>
-             </button>
-        </div>
-
-    </div>
-</header>
- <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT -->
     <main class="main-container">
-        
-
         <section class="category-grid">
             
-            <!-- Category 1: History -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-amber">🏛️</div>
@@ -52,7 +41,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 2: Geography -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-emerald">🌍</div>
@@ -61,7 +49,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 3: Polity -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-blue">⚖️</div>
@@ -70,7 +57,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 4: Physics -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-purple">🧲</div>
@@ -79,7 +65,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 5: Chemistry -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-cyan">🧪</div>
@@ -88,7 +73,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 6: Biology -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-rose">🦠</div>
@@ -97,7 +81,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 7: Economics -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-teal">📈</div>
@@ -106,7 +89,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 8: Current Affairs -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-orange">📰</div>
@@ -115,7 +97,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 9: Computer -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-indigo">💻</div>
@@ -124,7 +105,6 @@
                 <a href="./category.html" class="btn-test">टेस्ट दें</a>
             </div>
 
-            <!-- Category 10: Static GK -->
             <div class="category-card">
                 <div class="card-content">
                     <div class="icon-box icon-pink">📌</div>
@@ -136,9 +116,7 @@
         </section>
     </main>
 
-
-
-<!-- === 3. बॉटम नेविगेशन बार === -->
+    <!-- === 3. बॉटम नेविगेशन बार === -->
     <nav>
         <div class="app-container nav-inner">
             <a href="./index.html" class="nav-item active">
@@ -146,26 +124,24 @@
                 <span class="nav-label nav-label-active">Home</span>
                 <div class="active-dot"></div>
             </a>
-
             <a href="./feed.html" class="nav-item">
                 <i class="fa-solid fa-bolt"></i>
                 <span class="nav-label">Feed</span>
             </a>
-
             <div class="fab-wrapper">
                 <a href="https://theqna.in/" aria-label="Add Question" class="pro-fab">
                     <i class="fa-solid fa-plus"></i>
                 </a>
             </div>
-
             <a href="./category.html" class="nav-item">
                 <i class="fa-solid fa-layer-group"></i>
                 <span class="nav-label">Test</span>
             </a>
-
-            <a href="#" onclick="openProfile()" class="nav-item">
+            <a href="login.html" onclick="openProfile()" class="nav-item">
                 <i class="fa-regular fa-user"></i>
                 <span class="nav-label">Me</span>
             </a>
         </div>
     </nav>
+</body>
+</html>
