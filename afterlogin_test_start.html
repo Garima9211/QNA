@@ -75,9 +75,9 @@
                     <div class="reel-top-bar">
                         <div class="reel-meta">
                             <span>सवाल नंबर: #0${index + 1}</span>
-                            <span class="timer-badge">
+                          <*--  <span class="timer-badge">
                                 ⏱️ <span class="timer-text">30</span>s
-                            </span>
+                            </span>--*>
                         </div>
                         <div class="progress-track">
                             <div class="timer-bar bg-blue"></div>
@@ -115,25 +115,10 @@
                     <div class="reel-footer">
                         <div class="answer-box hidden">
                             <span class="answer-text">सही उत्तर: Option (${item.correct})</span>
-                            <button onclick="openExplanation(${index})" class="explanation-btn">
-                                <span>विस्तृत व्याख्या पढ़ें 📖</span>
-                            </button>
+                            
                         </div>
 
-                        <div class="actions-bar">
-                            <div class="metrics-pill">
-                                <button onclick="toggleLike(this)" class="action-btn-inline">
-                                    <span class="heart-icon">🤍</span> <span><span class="like-count">${item.likes}</span></span>
-                                </button>
-                                <span style="color: #374151;">|</span>
-                                <div class="action-btn-inline">
-                                    <span>👁️</span> <span>${item.views}</span>
-                                </div>
-                            </div>
-                            <button onclick="reportQuestionError(${item.id})" class="report-btn">
-                                <span>🚨</span> <span>रिपोर्ट</span>
-                            </button>
-                        </div>
+                     
                     </div>
                 </div>
             `;
