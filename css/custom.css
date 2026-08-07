@@ -1,7 +1,8 @@
        :root {
             --bg-dark: #0B0F19;
             --card-bg: #131B2C;
-            --accent: /* =========================================
+            --accent: 
+/* =========================================
    Main Content Area
 ========================================= */
 .main-feed {
@@ -213,11 +214,6 @@
     font-size: 0.75rem;
     font-weight: 600;
 }
-
-
-
-
-
 /* Floating Action Button (Center) */
 .fab-wrapper {
     position: relative;
@@ -381,7 +377,7 @@
         main {
             flex: 1;
             overflow-y: auto;
-            padding-top: 50px;
+            padding-top: 25px;
             padding-bottom: 112px;
             padding-left: 20px;
             padding-right: 20px;
@@ -2644,4 +2640,4 @@ html {
 .pro-fab:hover {
     transform: scale(1.1);
 }
-
+<!--CURRENT AFFAIRS CSS-->
