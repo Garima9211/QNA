@@ -66,16 +66,16 @@ if(localStorage.getItem("user")){
 }
 
 // Signup / Login Function
-// function loginUser(){
+function loginUser(){
 
-//     const name = document.getElementById("name").value.trim();
-//     const email = document.getElementById("email").value.trim();
-//     const phone = document.getElementById("phone").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
 
-//     if(!name || !email || !phone){
-//         alert("Please fill all fields.");
-//         return;
-//     }
+    if(!name || !email || !phone){
+        alert("Please fill all fields.");
+        return;
+    }
 
     const user = {
         id: Date.now(),
