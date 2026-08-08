@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #0B0F19;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button, input {
+    font-family: inherit;
+    outline: none;
+    border: none;
+}
+
+/* === 2. ग्लास कार्ड कंटेनर === */
+.signup-card {
+    width: 100%;
+    max-width: 448px; /* Tailwind max-w-md */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* === 3. हेडर और लोगो === */
+.header-box {
+    text-align: center;
+}
+
+.logo-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background-color: #2563eb; /* Tailwind blue-600 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 30px;
+    font-weight: 900;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.app-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-top: 20px;
+}
+
+.app-subtitle {
+    color: #9ca3af; /* Tailwind gray-400 */
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+/* === 4. फॉर्म इनपुट्स === */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.custom-input {
+    width: 100%;
+    background-color: #111827;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-input::placeholder {
+    color: #6b7280;
+}
+
+.custom-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* === 5. बटन्स === */
+.btn-primary {
+    width: 100%;
+    margin-top: 16px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 12px 0;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #3b82f6; /* Tailwind blue-500 */
+    transform: scale(1.02);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* === 6. डिवाइडर === */
+.divider-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.divider-line {
+    height: 1px;
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.divider-text {
+    font-size: 12px;
+    color: #9ca3af;
+    font-weight: 600;
+}
+
+/* === 7. गूगल बटन === */
+.btn-google {
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 12px;
+    padding: 12px 0;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.btn-google:hover {
+    background-color: #f3f4f6;
+    transform: scale(1.02);
+}
+
+.btn-google:active {
+    transform: scale(0.98);
+}
+
+.btn-google:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
