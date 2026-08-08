@@ -1,131 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The QNA - Sign Up</title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/signup.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Google</title>
+    <!-- अलग से बनाई गई CSS फाइल को लिंक किया गया है -->
+    <link rel="stylesheet" href="css/signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
-<div class="signup-card">
-
-    <div class="header-box">
-        <div class="logo-avatar">Q</div>
-        <h1 class="app-title">The QNA</h1>
-        <p class="app-subtitle">Create your account</p>
+    <div class="login-container">
+        <div class="login-card">
+            <h1 class="login-heading">Welcome Back</h1>
+            <p class="login-subheading">Sign in using your Google account to continue.</p>
+            
+            <!-- Google Login Button Configuration -->
+            <div id="g_id_onload"
+                 data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+            
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="outline"
+                 data-text="continue_with"
+                 data-shape="rectangular"
+                 data-logo_alignment="center">
+            </div>
+        </div>
     </div>
 
-    <!-- <div class="form-group">
-        <input
-            id="name"
-            class="custom-input"
-            placeholder="Full Name"
-            autocomplete="name">
+    <script>
+        // Google से मिले JWT Token को डिकोड करने का फंक्शन
+        function decodeJwtResponse(token) {
+            let base64Url = token.split('.')[1];
+            let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
 
-        <input
-            id="email"
-            type="email"
-            class="custom-input"
-            placeholder="Email"
-            autocomplete="email">
+        // जब लॉगिन सक्सेसफुल हो जाएगा तब यह फंक्शन चलेगा
+        function handleCredentialResponse(response) {
+            const responsePayload = decodeJwtResponse(response.credential);
 
-        <input
-            id="phone"
-            type="tel"
-            maxlength="10"
-            class="custom-input"
-            placeholder="Mobile Number"
-            autocomplete="tel">
-    </div> -->
+            // सिर्फ Name, Email और Photo ले रहे हैं (Mobile Number नहीं)
+            let u = {
+                name: responsePayload.name,
+                email: responsePayload.email,
+                photo: responsePayload.picture
+            };
 
-    <button id="continueBtn" class="btn-primary">
-        Continue
-    </button>
+            // LocalStorage में यूज़र का डेटा सेव करें
+            localStorage.setItem("user", JSON.stringify(u));
+            
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let i = users.findIndex(x => x.email === u.email);
+            
+            if(i >= 0) {
+                users[i] = u; // अगर पहले से है तो अपडेट करें
+            } else {
+                users.push(u); // नया यूज़र है तो ऐड करें
+            }
 
-    <div class="divider-box">
-        <div class="divider-line"></div>
-        <span class="divider-text">OR</span>
-        <div class="divider-line"></div>
-    </div>
+            localStorage.setItem("users", JSON.stringify(users));
 
-    <button id="googleBtn" class="btn-google">
-        Continue with Google
-    </button>
-
-</div>
-
-<script>
-// Already Logged In Check
-if(localStorage.getItem("user")){
-    location.href = "index.html";
-}
-
-// Signup / Login Function
-function loginUser(){
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-
-    if(!name || !email || !phone){
-        alert("Please fill all fields.");
-        return;
-    }
-
-    const user = {
-        id: Date.now(),
-        name: name,
-        email: email,
-        phone: phone,
-        photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(name),
-        rank: "#142",
-        accuracy: "86%",
-        tests: "24"
-    };
-
-    // Get Existing Users
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // Check Existing Email
-    const existingUser = users.find(u => u.email === email);
-
-    if(existingUser){
-        // Login
-        localStorage.setItem("user", JSON.stringify(existingUser));
-    } else {
-        // Signup
-        users.push(user);
-        localStorage.setItem("users", JSON.stringify(users));
-        localStorage.setItem("user", JSON.stringify(user));
-    }
-
-    // Disable Buttons during submission
-    const contBtn = document.getElementById("continueBtn");
-    const googBtn = document.getElementById("googleBtn");
-
-    contBtn.disabled = true;
-    googBtn.disabled = true;
-
-    contBtn.innerHTML = "Signing In...";
-    googBtn.innerHTML = "Signing In...";
-
-    setTimeout(() => {
-        location.href = "profile.html";
-    }, 1000);
-
-}
-
-// Continue Button Event
-document.getElementById("continueBtn").onclick = loginUser;
-
-// Google Button Event (Temporary)
-document.getElementById("googleBtn").onclick = loginUser;
-</script>
-
+            // लॉगिन के बाद प्रोफाइल पेज पर भेजें
+            window.location.href = "profile.html";
+        }
+    </script>
 </body>
 </html>
