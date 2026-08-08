@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The QNA - Sign Up</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/signup.css">
+
+</head>
+<body>
+
+<div class="signup-card">
+
+    <div class="header-box">
+        <div class="logo-avatar">Q</div>
+        <h1 class="app-title">The QNA</h1>
+        <p class="app-subtitle">Create your account</p>
+    </div>
+
+    <div class="form-group">
+        <input
+            id="name"
+            class="custom-input"
+            placeholder="Full Name"
+            autocomplete="name">
+
+        <input
+            id="email"
+            type="email"
+            class="custom-input"
+            placeholder="Email"
+            autocomplete="email">
+
+        <input
+            id="phone"
+            type="tel"
+            maxlength="10"
+            class="custom-input"
+            placeholder="Mobile Number"
+            autocomplete="tel">
+    </div>
+
+    <button id="continueBtn" class="btn-primary">
+        Continue
+    </button>
+
+    <div class="divider-box">
+        <div class="divider-line"></div>
+        <span class="divider-text">OR</span>
+        <div class="divider-line"></div>
+    </div>
+
+    <button id="googleBtn" class="btn-google">
+        Continue with Google
+    </button>
+
+</div>
+
+<script>
+// Already Logged In Check
+if(localStorage.getItem("user")){
+    location.href = "index.html";
+}
+
+// Signup / Login Function
+function loginUser(){
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if(!name || !email || !phone){
+        alert("Please fill all fields.");
+        return;
+    }
+
+    const user = {
+        id: Date.now(),
+        name: name,
+        email: email,
+        phone: phone,
+        photo: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(name),
+        rank: "#142",
+        accuracy: "86%",
+        tests: "24"
+    };
+
+    // Get Existing Users
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Check Existing Email
+    const existingUser = users.find(u => u.email === email);
+
+    if(existingUser){
+        // Login
+        localStorage.setItem("user", JSON.stringify(existingUser));
+    } else {
+        // Signup
+        users.push(user);
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("user", JSON.stringify(user));
+    }
+
+    // Disable Buttons during submission
+    const contBtn = document.getElementById("continueBtn");
+    const googBtn = document.getElementById("googleBtn");
+
+    contBtn.disabled = true;
+    googBtn.disabled = true;
+
+    contBtn.innerHTML = "Signing In...";
+    googBtn.innerHTML = "Signing In...";
+
+    setTimeout(() => {
+        location.href = "profile.html";
+    }, 1000);
+
+}
+
+// Continue Button Event
+document.getElementById("continueBtn").onclick = loginUser;
+
+// Google Button Event (Temporary)
+document.getElementById("googleBtn").onclick = loginUser;
+</script>
+
+</body>
+</html>
