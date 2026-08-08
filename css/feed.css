@@ -1,0 +1,28 @@
+.reels-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: calc(100vh - 70px);
+            scroll-behavior: smooth;
+            position: relative;
+        }
+        .reel-section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            height: 100%;
+            width: 100%;
+        }
+        .reels-container::-webkit-scrollbar, .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Modal Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #4B5563;
+            border-radius: 10px;
+        }

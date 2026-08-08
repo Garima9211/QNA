@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govt Jobs GK 100 Questions Test - The QNA</title>
+    <meta name="description" content="The QNA पर 100 सवालों का टेस्ट रील्स अंदाज में दें।">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .reels-container {
+            /* 110px हेडर के लिए माइनस किया गया है (50px नेव + 60px Ads) */
+            height: calc(100vh - 110px);
+            overflow: hidden; 
+            scroll-behavior: smooth;
+            position: relative;
+        }
+        .reel-section {
+            height: 100%;
+            width: 100%;
+        }
+        /* Premium Glassmorphism Design */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-button {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased overflow-hidden">
+
+    <!-- Header / Navigation -->
+    <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50 shadow-lg w-full h-[110px] flex flex-col shrink-0">
+        
+        <!-- टॉप नेविगेशन बार (50px) -->
+        <div class="h-[50px] max-w-[96%] mx-auto w-full flex items-center justify-between shrink-0">
+            <div class="text-2xl font-black text-blue-500 tracking-tight">
+                <a href="/">The <span class="text-white">QNA</span></a>
+            </div>
+            <div class="bg-blue-600/20 text-blue-400 font-bold px-3 py-1 rounded-full text-[10px] border border-blue-500/30">
+                🎖️ 100 Qs Test
+            </div>
+            <nav class="flex items-center space-x-4 text-xs font-bold text-gray-300">
+                <a href="/" class="hover:text-blue-500 transition">Home</a>
+            </nav>
+        </div>
+        
+        <!-- UNIVERSAL AD SLOT (60px Box -> 300x50 Ad Space) -->
+        <div class="h-[60px] w-full bg-black flex items-center justify-center border-t border-gray-800 shrink-0">
+            <!-- यह 300x50 का बॉक्स है। यहाँ आप किसी भी एड नेटवर्क का कोड या इमेज डाल सकते हैं -->
+            <div id="universal-ad-space" class="w-[300px] h-[50px] bg-gray-800 flex items-center justify-center text-xs font-bold text-gray-500 rounded border border-gray-700 shadow-inner">
+                Universal Ad Space (300x50)
+            </div>
+        </div>
+        
+    </header>
+
+    <!-- REELS STYLE MAIN CONTAINER -->
+    <main id="reels-wrapper" class="reels-container w-full max-w-lg mx-auto bg-black border-x border-gray-800">
+        <!-- सवाल यहाँ लोड होंगे -->
+    </main>
+
+    <script>
+        // GK क्वेश्चन बैंक
+        const gkQuestionBank = [
+            { 
+                id: 1, 
+                q: "भारतीय संविधान का जनक किसे कहा जाता है?", 
+                a: "डॉ. बी.आर. अम्बेडकर", b: "महात्मा गांधी", c: "जवाहरलाल नेहरू", d: "डॉ. राजेन्द्र प्रसाद", 
+                correct: "A", exam: "UPPCS", year: "2024"
+            },
+            { 
+                id: 2, 
+                q: "भारत में किस राज्य की तटरेखा (Coastline) सबसे लंबी है?", 
+                a: "महाराष्ट्र", b: "तमिलनाडु", c: "गुजरात", d: "आंध्र प्रदेश", 
+                correct: "C", exam: "SSC CGL", year: "2023"
+            },
+            { 
+                // बड़ा सवाल चेक करने के लिए
+                id: 3, 
+                q: "प्लेट विवर्तनिकी सिद्धांत 1967 में जेसन मॉर्गन और मैकेंजी ने क्यों प्रतिपादित किया और इसके अनुसार पृथ्वी का स्थलमंडल किसे विभाजित करता है?", 
+                a: "महाद्वीपीय विस्थापन को समझाने के लिए, 7 मुख्य और कई छोटी प्लेटों में", 
+                b: "भूकंपीय तरंगों को मापने के लिए, 5 मुख्य परतों में", 
+                c: "समुद्री जलस्तर मापने के लिए, 3 मुख्य खण्डों में", 
+                d: "ज्वालामुखी विस्फोट रोकने के लिए, 9 छोटी प्लेटों में", 
+                correct: "A", exam: "UPSC CSE", year: "2021"
+            }
+        ];
+
+        const wrapper = document.getElementById('reels-wrapper');
+        let activeTimers = {};
+
+        // रील कार्ड जनरेटर कोड (No Overlap, No Squish Layout)
+        function createQuestionReelHTML(item, index) {
+            return `
+                <div id="reel-${index}" class="reel-section p-4 sm:p-5 flex flex-col relative bg-gradient-to-b from-gray-900 to-black overflow-hidden" data-correct="${item.correct}" data-index="${index}">
+                    
+                    <div class="absolute top-[-10%] left-[-10%] w-40 h-40 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Top Bar: Timer & Number (Fix Height: shrink-0) -->
+                    <div class="w-full shrink-0 relative z-10 mb-2">
+                        <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
+                            <span class="bg-gray-800/80 px-2.5 py-1 rounded-full border border-gray-700 font-medium">सवाल #${index + 1}</span>
+                            <span class="text-white font-mono font-bold bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.4)] px-2.5 py-1 rounded-full flex items-center gap-1">
+                                ⏱️ <span class="timer-text">30</span>s
+                            </span>
+                        </div>
+                        <div class="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="timer-bar h-full bg-blue-500 w-full transition-all duration-1000 ease-linear"></div>
+                        </div>
+                    </div>
+
+                    <!-- Middle: QnA Wrapper (flex-1 ensures it stays centered without resizing internal boxes) -->
+                    <div class="flex-1 flex flex-col justify-center w-full relative z-10">
+                        
+                        <!-- Question Box (shrink-0 ensures it never squishes) -->
+                        <div class="glass-panel p-3.5 sm:p-4 rounded-xl w-full shrink-0 mb-3">
+                            <h2 class="text-[14px] sm:text-[15px] md:text-base font-bold text-white leading-snug tracking-wide mb-1 break-words">
+                                ${item.q}
+                            </h2>
+                            <div class="text-right mt-1">
+                                <span class="inline-block bg-blue-500/20 text-blue-300 text-[9px] font-extrabold px-1.5 py-0.5 rounded border border-blue-500/30 uppercase tracking-wider">
+                                    📋 ${item.exam} (${item.year})
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 4 Options Grid (shrink-0 ensures it never squishes) -->
+                        <div class="space-y-2 w-full options-group shrink-0">
+                            ${['A', 'B', 'C', 'D'].map(opt => `
+                                <button onclick="checkAnswer(this, '${opt}')" class="option-btn w-full text-left glass-button hover:bg-white/10 p-2.5 sm:p-3 rounded-lg transition-all duration-200 flex items-start space-x-2.5">
+                                    <span class="badge bg-gray-700/80 text-white w-6 h-6 flex items-center justify-center rounded-md text-xs font-bold shrink-0 shadow-inner mt-0.5">${opt}</span>
+                                    <span class="text-gray-100 text-[12px] sm:text-[13px] md:text-[14px] font-medium leading-snug break-words whitespace-normal mt-0.5">${item[opt.toLowerCase()]}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                        
+                        <!-- Next Button Wrapper (RESERVED SPACE: h-[45px]. यह जगह हमेशा फिक्स रहेगी) -->
+                        <div class="h-[45px] mt-3 w-full shrink-0">
+                            <button onclick="scrollToNext(this)" class="answer-box hidden w-full h-full bg-blue-600 hover:bg-blue-500 text-white text-[13px] sm:text-[14px] font-bold rounded-lg transition flex items-center justify-center gap-2 shadow-[0_0_10px_rgba(37,99,235,0.4)]">
+                                <span>अगला सवाल ➡️</span>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            `;
+        }
+
+        // फुल स्क्रीन विज्ञापन (Full Screen Break)
+        function createFullScreenAdHTML() {
+            return `
+                <div class="reel-section p-6 flex flex-col justify-between bg-gradient-to-b from-indigo-900 to-black relative">
+                    <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest pt-2 block text-center">Sponsored Advertisement</span>
+                    <div class="my-auto space-y-6 text-center glass-panel p-6 rounded-2xl mx-4">
+                        <div class="w-16 h-16 bg-blue-500 text-white text-2xl font-black flex items-center justify-center rounded-xl mx-auto shadow-[0_0_30px_rgba(59,130,246,0.5)]">AD</div>
+                        <h3 class="text-xl font-extrabold text-white leading-tight">Universal Ad Slot<br>Full-Display</h3>
+                        <p class="text-[12px] text-gray-400 max-w-xs mx-auto">ब्रेक टाइम! यह एक विज्ञापन स्लॉट है।</p>
+                        <div class="pt-3">
+                            <button onclick="scrollToNext(this)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[13px] font-bold py-2.5 px-6 rounded-full shadow-lg">विज्ञापन छोड़ें ➡️</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- NEXT QUESTION SCROLL LOGIC ---
+        function scrollToNext(btn) {
+            const currentSection = btn.closest('.reel-section');
+            const nextSection = currentSection.nextElementSibling;
+            
+            if (nextSection) {
+                wrapper.scrollTo({
+                    top: nextSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            } else {
+                alert("🎉 बधाई हो! आपने सभी सवाल पूरे कर लिए हैं।");
+            }
+        }
+
+        // राइट/रॉन्ग आंसर इवैल्यूएशन
+        function checkAnswer(selectedBtn, selectedOption) {
+            const reel = selectedBtn.closest('.reel-section');
+            const correctOption = reel.getAttribute('data-correct');
+            const optionsGroup = reel.querySelector('.options-group');
+            const allButtons = optionsGroup.querySelectorAll('.option-btn');
+            
+            const reelIndex = reel.getAttribute('data-index');
+            clearInterval(activeTimers[reelIndex]);
+
+            allButtons.forEach(btn => btn.disabled = true);
+
+            allButtons.forEach(btn => {
+                const optionLetter = btn.querySelector('.badge').innerText;
+                
+                if (optionLetter === correctOption) {
+                    btn.classList.remove('glass-button', 'hover:bg-white/10');
+                    btn.classList.add('bg-green-600/90', 'border-green-500', 'shadow-[0_0_15px_rgba(34,197,94,0.3)]');
+                    btn.querySelector('.badge').classList.replace('bg-gray-700/80', 'bg-green-800');
+                } else if (optionLetter === selectedOption && selectedOption !== correctOption) {
+                    btn.classList.remove('glass-button', 'hover:bg-white/10');
+                    btn.classList.add('bg-red-600/90', 'border-red-500');
+                    btn.querySelector('.badge').classList.replace('bg-gray-700/80', 'bg-red-800');
+                }
+            });
+
+            // बटन को Show करें (चूँकि जगह पहले से फिक्स है, लेआउट बिल्कुल नहीं हिलेगा)
+            reel.querySelector('.answer-box').classList.remove('hidden');
+        }
+
+        // टाइमर इंजन (30 सेकंड)
+        function startTimerForReel(reelElement, index) {
+            let timeLeft = 30; 
+            const timerText = reelElement.querySelector('.timer-text');
+            const timerBar = reelElement.querySelector('.timer-bar');
+            
+            if(activeTimers[index]) clearInterval(activeTimers[index]);
+
+            if(!timerBar) return;
+
+            timerBar.style.width = '100%';
+            timerBar.classList.remove('bg-red-500');
+            timerBar.classList.add('bg-blue-500');
+
+            activeTimers[index] = setInterval(() => {
+                timeLeft--;
+                if(timerText) timerText.innerText = timeLeft;
+
+                let percentage = (timeLeft / 30) * 100; 
+                if(timerBar) timerBar.style.width = percentage + '%';
+
+                if (timeLeft <= 10 && timerBar) {
+                    timerBar.classList.remove('bg-blue-500');
+                    timerBar.classList.add('bg-red-500');
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(activeTimers[index]);
+                    const correctOption = reelElement.getAttribute('data-correct');
+                    const firstCorrectBtn = Array.from(reelElement.querySelectorAll('.option-btn')).find(btn => btn.querySelector('.badge').innerText === correctOption);
+                    if(firstCorrectBtn) checkAnswer(firstCorrectBtn, null);
+                }
+            }, 1000);
+        }
+
+        // विज़िबल स्क्रीन ट्रैकर
+        function initScrollObserver() {
+            const observerOptions = { root: wrapper, threshold: 0.6 };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const reelIndex = entry.target.getAttribute('data-index');
+                        if (reelIndex !== null) {
+                            startTimerForReel(entry.target, reelIndex);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reel-section').forEach(reel => {
+                observer.observe(reel);
+            });
+        }
+
+        // लूप रेंडरिंग
+        function renderReelsEngine() {
+            let combinedHTML = "";
+            let totalQuestions = 0;
+
+            for (let loop = 0; loop < 5; loop++) {
+                gkQuestionBank.forEach((item) => {
+                    combinedHTML += createQuestionReelHTML(item, totalQuestions);
+                    totalQuestions++;
+
+                    if (totalQuestions % 10 === 0) {
+                        combinedHTML += createFullScreenAdHTML();
+                    }
+                });
+            }
+            wrapper.innerHTML = combinedHTML;
+            setTimeout(initScrollObserver, 100);
+        }
+
+        renderReelsEngine();
+    </script>
+</body>
+</html>

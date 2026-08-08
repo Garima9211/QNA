@@ -2,91 +2,434 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>QNA Shorts - Mobile View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Govt Jobs GK 100 Questions Test - The QNA</title>
+    <meta name="description" content="The QNA पर 100 सवालों का टेस्ट रील्स अंदाज में दें।">
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
 </head>
-<body>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased overflow-hidden">
 
-    <!-- मुख्य मोबाइल स्क्रीन फ्रेम Container -->
-    <div class="mobile-wrapper">
+    <!-- Header / Navigation (Fixed) -->
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 shadow-md w-full h-[70px] flex items-center shrink-0">
+        <div class="max-w-[96%] mx-auto w-full flex items-center justify-between">
+            <div class="text-2xl font-black text-blue-500 tracking-tight">
+                <a href="/">The <span class="text-white">QNA</span></a>
+            </div>
+            
+            <!-- NEW: Animated Branding Badge (White & Yellow) -->
+            <div class="bg-white/5 border border-yellow-500/50 px-3 py-1.5 rounded-full shadow-[0_0_12px_rgba(234,179,8,0.4)] animate-pulse flex items-center gap-0.5">
+                <span class="text-white font-bold text-[11px] tracking-wide">www.</span>
+                <span class="text-yellow-400 font-black text-[12px] tracking-wide">theqna.in</span>
+            </div>
+
+            <nav class="flex items-center space-x-4 text-xs md:text-sm font-bold text-gray-300">
+                <a href="/" class="hover:text-blue-500 transition">Home</a>
+                <a href="/forum" class="hover:text-blue-500 transition">मंच</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- REELS STYLE MAIN CONTAINER -->
+    <main id="reels-wrapper" class="reels-container w-full max-w-lg mx-auto bg-gray-950 border-x border-gray-800 relative">
         
-        <!-- ऐप हेडर (Header) -->
-        <header class="app-header">
-            <div class="header-inner">
-                <div class="logo-box">
-                    <div class="logo-icon">Q</div>
-                    <h1 class="logo-title">The <span>QNA</span></h1>
-                </div>
-
-                <div class="header-actions">
-                    <button class="icon-btn" onclick="openProfile()" aria-label="Profile">
-                        <i class="fa-regular fa-user"></i>
-                    </button>
-                </div>
+        <!-- HEADER BANNER AD SLOT (Sticky inside Reels Wrapper) -->
+        <div id="header-banner-container" class="sticky top-0 z-40 w-full h-[60px] bg-gray-900 flex items-center justify-center border-b border-gray-800 transition-all duration-300">
+            <div class="w-[320px] h-[50px] bg-gray-800 flex items-center justify-center text-xs font-bold text-gray-500 rounded border border-gray-700 shadow-inner">
+                Header Ad Space (320 x 50)
             </div>
-        </header>
+        </div>
 
-        <!-- मुख्य रील्स स्क्रोलिंग एरिया -->
-        <main id="reelsContainer" class="reels-container no-scrollbar"></main>
+        <!-- सवाल यहाँ जावास्क्रिप्ट से लोड होंगे -->
+        <div id="reels-content"></div>
 
-        <!-- बॉटम नेविगेशन बार (Mobile Bottom Nav) -->
-        <nav class="bottom-nav">
-            <div class="nav-inner">
-                <a href="./index.html" class="nav-item active">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="nav-label">Home</span>
-                    <div class="active-dot"></div>
-                </a>
+    </main>
 
-                <a href="./feed.html" class="nav-item">
-                    <i class="fa-solid fa-bolt"></i>
-                    <span class="nav-label">Feed</span>
-                </a>
-
-                <div class="fab-wrapper">
-                    <a href="https://theqna.in/" aria-label="Add Question" class="pro-fab">
-                        <i class="fa-solid fa-plus"></i>
-                    </a>
-                </div>
-
-                <a href="./category.html" class="nav-item">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <span class="nav-label">Test</span>
-                </a>
-
-                <a href="#" onclick="openProfile()" class="nav-item">
-                    <i class="fa-regular fa-user"></i>
-                    <span class="nav-label">Me</span>
-                </a>
+    <!-- DYNAMIC BOTTOM EXPLANATION SHEET (Context Modal) -->
+    <div id="sheet-overlay" class="fixed inset-0 bg-black/70 z-[60] hidden transition-opacity" onclick="closeExplanation()"></div>
+    
+    <div id="explanation-sheet" class="fixed inset-x-0 bottom-0 z-[70] max-w-lg mx-auto bg-gray-900 border-t-2 border-blue-600 rounded-t-3xl shadow-2xl transform translate-y-full transition-transform duration-300 ease-out h-[85vh] flex flex-col">
+        
+        <!-- Drag Handle & Header -->
+        <div class="pt-4 pb-2 shrink-0 bg-gray-900 rounded-t-3xl">
+            <div class="w-12 h-1.5 bg-gray-700 rounded-full mx-auto mb-3 cursor-pointer" onclick="closeExplanation()"></div>
+            <div class="flex items-center justify-between border-b border-gray-800 pb-3 px-6">
+                <h3 class="text-base font-black text-white flex items-center gap-2">
+                    📖 विस्तृत व्याख्या
+                </h3>
+                <button onclick="closeExplanation()" class="text-gray-400 hover:text-white font-bold text-sm bg-gray-800 px-3 py-1.5 rounded-full">बंद करें ✕</button>
             </div>
-        </nav>
+        </div>
+        
+        <!-- Scrollable Area for Explanation and Ad -->
+        <div class="flex-1 overflow-y-auto custom-scroll px-6 pb-6 pt-2 space-y-5">
+            <!-- Explanation Text -->
+            <div id="explanation-text" class="text-sm text-gray-300 leading-relaxed font-medium">
+                <!-- Dynamic Content -->
+            </div>
 
-        <!-- विज्ञापन मोडल (Ad Modal) -->
-        <div id="adModal" class="modal-overlay">
-            <div class="ad-modal-content">
-                <button onclick="closeAd()" class="close-ad-btn" aria-label="Close Ad">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <span class="ad-tag">Advertisement</span>
-                <div class="ad-card">
-                    <i class="fa-brands fa-google ad-icon"></i>
-                    <h3 class="ad-title">Your Sponsored Ad Here</h3>
-                    <p class="ad-desc">यह फुल-स्क्रीन विज्ञापन रिवेन्यू जनरेट करेगा। यूज़र इसे देखकर ही पूरी जानकारी पढ़ सकेगा।</p>
-                    <button onclick="closeAd()" class="skip-btn">Skip Ad</button>
+            <!-- EXPLANATION BOTTOM AD SLOT (300x250) -->
+            <div class="w-full flex justify-center py-4 border-t border-gray-800/60 mt-4">
+                <div class="w-[300px] h-[250px] bg-gray-800 flex flex-col items-center justify-center text-gray-500 rounded-xl border border-gray-700 shadow-inner relative overflow-hidden">
+                    <span class="text-[10px] absolute top-2 right-2 bg-gray-900 px-2 rounded text-gray-400">Sponsored</span>
+                    <span class="text-2xl mb-2">📢</span>
+                    <span class="font-bold text-sm text-gray-400">Context Ad Space</span>
+                    <span class="text-xs text-gray-500">(300 x 250)</span>
                 </div>
             </div>
         </div>
 
+        <!-- Next Button inside the Sheet -->
+        <div class="p-4 border-t border-gray-800 shrink-0 bg-gray-900">
+            <button onclick="nextFromExplanation()" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-[15px] font-bold py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
+                <span>अगला सवाल ➡️</span>
+            </button>
+        </div>
     </div>
 
-    <!-- JavaScript File -->
-    <script src="js/app.js"></script>
+    <!-- TRUE FULL SCREEN VIDEO AD OVERLAY (Z-index 100) -->
+    <div id="video-ad-overlay" class="fixed inset-0 z-[100] hidden bg-black flex-col justify-center items-center">
+        <!-- Ad Timer / Info -->
+        <div class="absolute top-6 left-6 right-6 flex justify-between items-center z-20">
+            <span class="text-[10px] font-bold text-gray-400 bg-gray-900/80 px-2 py-1 rounded uppercase tracking-widest">Sponsored Video</span>
+            <div id="ad-countdown" class="text-xs font-bold bg-black/60 text-white px-3 py-1 rounded-full border border-gray-600">
+                Ad ends in <span id="v-time" class="text-blue-400">5</span>s
+            </div>
+        </div>
+        
+        <!-- Simulated Video Player -->
+        <div class="w-full h-full absolute inset-0 bg-gray-900 flex flex-col items-center justify-center border-y border-gray-800">
+            <span class="text-6xl text-gray-600 mb-6 animate-pulse">▶️</span>
+            <h3 class="text-2xl font-extrabold text-white leading-tight">Video Ad Slot</h3>
+            <p class="text-sm text-gray-500 mt-2">True Full Screen Interstitial</p>
+        </div>
+        
+        <!-- Skip Button (Hidden initially) -->
+        <div id="skip-btn-container" class="hidden absolute bottom-10 right-6 z-20">
+            <button onclick="skipVideoAd()" class="bg-gray-800/90 border border-gray-600 hover:bg-gray-700 text-white font-bold py-2.5 px-6 rounded-full shadow-2xl text-sm transition flex items-center gap-2">
+                Skip Ad ⏭️
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // GK क्वेश्चन बैंक
+        const gkQuestionBank = [
+            { 
+                id: 1, 
+                q: "भारतीय संविधान का जनक किसे कहा जाता है?", 
+                a: "डॉ. बी.आर. अम्बेडकर", b: "महात्मा गांधी", c: "जवाहरलाल नेहरू", d: "डॉ. राजेन्द्र प्रसाद", 
+                correct: "A", exam: "UPPCS", year: "2024", likes: 245, views: "1.2K",
+                context: "डॉ. भीमराव अम्बेडकर को भारतीय संविधान का जनक और निर्माता कहा जाता है क्योंकि वह संविधान का मसौदा तैयार करने वाली 'प्रारूप समिति' (Drafting Committee) के अध्यक्ष थे। उन्होंने दुनिया भर के विभिन्न संविधानों का गहरा अध्ययन किया और भारतीय समाज की विविधताओं और अधिकारों को ध्यान में रखते हुए एक मजबूत ढांचा तैयार किया। संविधान सभा में उनकी अद्वितीय भूमिका और कानूनी समझ के कारण ही उन्हें यह गौरवशाली स्थान प्राप्त हुआ है, जो परीक्षाओं में बार-बार पूछा जाने वाला एक प्रामाणिक ऐतिहासिक तथ्य है।"
+            },
+            { 
+                id: 2, 
+                q: "भारत में किस राज्य की तटरेखा (Coastline) सबसे लंबी है?", 
+                a: "महाराष्ट्र", b: "तमिलनाडु", c: "गुजरात", d: "आंध्र प्रदेश", 
+                correct: "C", exam: "SSC CGL", year: "2023", likes: 189, views: "940",
+                context: "भारत की मुख्य भूमि की कुल तटरेखा लगभग 5422 किलोमीटर लंबी है, जिसमें अकेले गुजरात राज्य की तटरेखा सबसे लंबी है, जिसकी कुल लंबाई लगभग 1214.7 किलोमीटर है। गुजरात के बाद दूसरे स्थान पर आंध्र प्रदेश आता है। गुजरात की भौगोलिक स्थिति ऐसी है कि इसमें कच्छ और खंभात की खाड़ियां शामिल हैं, जिससे इसकी तटीय सीमा अत्यधिक घुमावदार और लंबी हो जाती है। यह सवाल भूगोल के अंतर्गत सरकारी परीक्षाओं में हमेशा एक अकाষ্ঠमिक और प्रामाणिक तथ्य के रूप में पूछा जाता है।"
+            },
+            { 
+                id: 3, 
+                q: "प्लेट विवर्तनिकी सिद्धांत 1967 में जेसन मॉर्गन और मैकेंजी ने क्यों प्रतिपादित किया और इसके अनुसार पृथ्वी का स्थलमंडल किसे विभाजित करता है?", 
+                a: "महाद्वीपीय विस्थापन को समझाने के लिए, 7 मुख्य प्लेटों में", 
+                b: "भूकंपीय तरंगों को मापने के लिए, 5 मुख्य परतों में", 
+                c: "समुद्री जलस्तर मापने के लिए, 3 मुख्य खण्डों में", 
+                d: "ज्वालामुखी विस्फोट रोकने के लिए, 9 छोटी प्लेटों में", 
+                correct: "A", exam: "UPSC CSE", year: "2021", likes: 312, views: "2.1K",
+                context: "प्लेट विवर्तनिकी सिद्धांत (Plate Tectonics) पृथ्वी के स्थलमंडल (Lithosphere) की गति और महाद्वीपीय विस्थापन (Continental Drift) को वैज्ञानिक रूप से समझाने के लिए प्रतिपादित किया गया था। इस सिद्धांत के अनुसार, पृथ्वी की बाहरी परत एक अखंड चट्टान नहीं है, बल्कि यह 7 प्रमुख और कई छोटी प्लेटों में विभाजित है जो दुर्बलतामंडल (Asthenosphere) पर लगातार तैर और खिसक रही हैं।"
+            }
+        ];
+
+        const wrapper = document.getElementById('reels-wrapper');
+        const contentContainer = document.getElementById('reels-content');
+        let activeTimers = {};
+        let currentActiveReelIndex = 0;
+        let nextSectionToScroll = null;
+
+        // रील कार्ड जनरेटर (With Background Watermark)
+        function createQuestionReelHTML(item, index) {
+            return `
+                <div id="reel-${index}" class="question-reel reel-section pt-[75px] pb-4 px-5 flex flex-col bg-gradient-to-b from-gray-950 to-gray-900 relative z-10" data-correct="${item.correct}" data-index="${index}">
+                    
+                    <!-- NEW: BACKGROUND BRANDING WATERMARK -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0 opacity-[0.04] rotate-[-30deg] select-none">
+                        <span class="text-4xl md:text-5xl font-black text-white">www.theqna.in</span>
+                        <span class="text-2xl font-bold text-yellow-500 mt-2">The QNA</span>
+                    </div>
+
+                    <!-- Top Bar: Timer & Number -->
+                    <div class="w-full shrink-0 mb-3 relative z-10">
+                        <div class="flex items-center justify-between text-[11px] text-gray-400 mb-2">
+                            <span class="bg-gray-800 px-2.5 py-1 rounded-md border border-gray-700">सवाल #${index + 1}</span>
+                            <span class="text-red-400 font-mono font-bold bg-red-950/40 border border-red-900/40 px-2.5 py-1 rounded-md flex items-center gap-1">
+                                ⏱️ <span class="timer-text">30</span>s
+                            </span>
+                        </div>
+                        <div class="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
+                            <div class="timer-bar h-full bg-blue-500 w-full transition-all duration-1000 ease-linear"></div>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable Middle Section (Boxes for Question & Options) -->
+                    <div class="flex-1 flex flex-col justify-center w-full space-y-3 overflow-y-auto hide-scroll pb-2 relative z-10">
+                        
+                        <!-- Structured Question Box -->
+                        <div class="bg-gray-800/80 border border-gray-700 p-4 rounded-xl w-full shrink-0 shadow-sm relative backdrop-blur-sm">
+                            <h2 class="text-[14px] md:text-[15px] font-bold text-white leading-relaxed break-words pr-12">
+                                ${item.q}
+                            </h2>
+                            <span class="absolute top-3 right-3 bg-blue-900/50 text-blue-300 text-[9px] font-extrabold px-1.5 py-0.5 rounded border border-blue-700/50 uppercase">
+                                ${item.exam}
+                            </span>
+                        </div>
+
+                        <!-- Structured Options Box -->
+                        <div class="bg-gray-900 border border-gray-800 p-3 rounded-xl w-full shrink-0 space-y-2 options-group shadow-inner backdrop-blur-sm">
+                            ${['A', 'B', 'C', 'D'].map(opt => `
+                                <button onclick="checkAnswer(this, '${opt}')" class="option-btn w-full text-left bg-gray-800 border border-gray-700 p-3 rounded-lg text-[13px] md:text-[14px] font-medium transition flex items-start space-x-3 hover:bg-gray-700">
+                                    <span class="badge bg-gray-700 text-white w-6 h-6 flex items-center justify-center rounded-md text-xs font-bold shrink-0 mt-0.5">${opt}</span>
+                                    <span class="leading-snug text-gray-200 mt-1">${item[opt.toLowerCase()]}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Bottom Action Area -->
+                    <div class="w-full shrink-0 h-[115px] flex flex-col justify-end pt-2 border-t border-gray-800/50 mt-2 relative z-10">
+                        
+                        <!-- ANSWER BOX -->
+                        <div class="answer-box hidden w-full flex-col gap-2.5 mb-2">
+                            <div class="bg-green-950/40 border border-green-500/30 p-2.5 rounded-lg flex items-center justify-between">
+                                <span class="text-green-400 font-bold text-[13px]">✅ उत्तर: (${item.correct})</span>
+                                <button onclick="openExplanation(${index})" class="bg-green-600 hover:bg-green-500 text-white text-[12px] font-bold px-3 py-1.5 rounded-md shadow-md transition">
+                                    व्याख्या 📖
+                                </button>
+                            </div>
+                            <button onclick="scrollToNext(this)" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-lg transition shadow-md text-[14px]">
+                                अगला सवाल ➡️
+                            </button>
+                        </div>
+
+                        <!-- INTERACTIONS BAR -->
+                        <div class="interactions-bar flex items-center justify-between text-xs text-gray-500 mb-2">
+                            <div class="flex items-center space-x-3 bg-gray-800 px-3 py-2 rounded-lg border border-gray-700">
+                                <button onclick="toggleLike(this)" class="flex items-center space-x-1 font-bold hover:text-red-500 transition">
+                                    <span>🤍</span> <span><span class="like-count">${item.likes}</span></span>
+                                </button>
+                                <span class="text-gray-600">|</span>
+                                <div class="flex items-center space-x-1 font-bold">
+                                    <span>👁️</span> <span>${item.views}</span>
+                                </div>
+                            </div>
+                            <button onclick="reportQuestionError(${item.id})" class="bg-red-950/30 text-red-400 border border-red-900/40 hover:bg-red-900 hover:text-white font-bold px-3 py-2 rounded-lg transition text-[11px] flex items-center space-x-1">
+                                <span>🚨</span> <span>रिपोर्ट</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- SCROLL LOGIC & FULL SCREEN VIDEO AD TRIGGER ---
+        function scrollToNext(btn) {
+            const currentSection = btn ? btn.closest('.reel-section') : document.getElementById(`reel-${currentActiveReelIndex}`);
+            const nextSection = currentSection.nextElementSibling;
+            
+            if (nextSection) {
+                let nextIndex = parseInt(nextSection.getAttribute('data-index'));
+                
+                // 20 सवालों के बाद फुल स्क्रीन एड
+                if (nextIndex > 0 && nextIndex % 20 === 0 && !nextSection.dataset.adShown) {
+                    showFullScreenVideoAd(nextSection);
+                    nextSection.dataset.adShown = 'true'; 
+                } else {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                alert("🎉 बधाई हो! आपने सभी सवाल पूरे कर लिए हैं।");
+            }
+        }
+
+        // --- TRUE FULL SCREEN VIDEO AD LOGIC ---
+        function showFullScreenVideoAd(nextSection) {
+            nextSectionToScroll = nextSection;
+            const overlay = document.getElementById('video-ad-overlay');
+            
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            
+            document.getElementById('skip-btn-container').classList.add('hidden');
+            document.getElementById('ad-countdown').classList.remove('hidden');
+            document.getElementById('v-time').innerText = '5';
+            
+            let timeLeft = 5;
+            let vInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('v-time').innerText = timeLeft;
+                if(timeLeft <= 0) {
+                    clearInterval(vInterval);
+                    document.getElementById('ad-countdown').classList.add('hidden');
+                    document.getElementById('skip-btn-container').classList.remove('hidden');
+                }
+            }, 1000);
+        }
+
+        function skipVideoAd() {
+            const overlay = document.getElementById('video-ad-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            
+            if(nextSectionToScroll) {
+                nextSectionToScroll.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // --- BOTTOM SHEET MODAL LOGIC ---
+        function openExplanation(originalIndex) {
+            currentActiveReelIndex = originalIndex;
+            const itemIndex = originalIndex % gkQuestionBank.length;
+            const item = gkQuestionBank[itemIndex];
+            
+            let formattedText = item.context ? item.context.replace(/\n/g, '<br><br>') : "इस प्रश्न की विस्तृत व्याख्या उपलब्ध नहीं है।";
+            document.getElementById('explanation-text').innerHTML = formattedText;
+            
+            document.getElementById('sheet-overlay').classList.remove('hidden');
+            const sheet = document.getElementById('explanation-sheet');
+            sheet.classList.remove('translate-y-full');
+            sheet.classList.add('translate-y-0');
+        }
+
+        function closeExplanation() {
+            document.getElementById('sheet-overlay').classList.add('hidden');
+            const sheet = document.getElementById('explanation-sheet');
+            sheet.classList.remove('translate-y-0');
+            sheet.classList.add('translate-y-full');
+        }
+
+        function nextFromExplanation() {
+            closeExplanation();
+            setTimeout(() => {
+                scrollToNext(null);
+            }, 300);
+        }
+
+        function reportQuestionError(questionId) {
+            alert(`⚠️ अलर्ट: सवाल #${questionId} की रिपोर्ट दर्ज कर ली गई है।`);
+        }
+
+        // राइट/रॉन्ग आंसर इवैल्यूएशन 
+        function checkAnswer(selectedBtn, selectedOption) {
+            const reel = selectedBtn.closest('.reel-section');
+            const correctOption = reel.getAttribute('data-correct');
+            const allButtons = reel.querySelectorAll('.option-btn');
+            
+            const reelIndex = reel.getAttribute('data-index');
+            if(activeTimers[reelIndex]) clearInterval(activeTimers[reelIndex]);
+
+            allButtons.forEach(btn => btn.disabled = true);
+
+            allButtons.forEach(btn => {
+                const optionLetter = btn.querySelector('.badge').innerText;
+                
+                if (optionLetter === correctOption) {
+                    btn.classList.remove('bg-gray-800', 'border-gray-700', 'hover:bg-gray-700');
+                    btn.classList.add('bg-green-900/60', 'border-green-500', 'text-white');
+                    btn.querySelector('.badge').classList.replace('bg-gray-700', 'bg-green-600');
+                } else if (optionLetter === selectedOption && selectedOption !== correctOption) {
+                    btn.classList.remove('bg-gray-800', 'border-gray-700', 'hover:bg-gray-700');
+                    btn.classList.add('bg-red-900/60', 'border-red-500', 'text-white');
+                    btn.querySelector('.badge').classList.replace('bg-gray-700', 'bg-red-600');
+                }
+            });
+
+            reel.querySelector('.interactions-bar').classList.add('hidden');
+            reel.querySelector('.answer-box').classList.remove('hidden');
+            reel.querySelector('.answer-box').classList.add('flex');
+        }
+
+        // टाइमर कोर इंजन (30s)
+        function startTimerForReel(reelElement, index) {
+            let timeLeft = 30;
+            const timerText = reelElement.querySelector('.timer-text');
+            const timerBar = reelElement.querySelector('.timer-bar');
+            
+            if(activeTimers[index]) clearInterval(activeTimers[index]);
+            if(!timerBar) return; 
+
+            timerBar.style.width = '100%';
+            timerBar.classList.remove('bg-red-500');
+            timerBar.classList.add('bg-blue-500');
+
+            activeTimers[index] = setInterval(() => {
+                timeLeft--;
+                if(timerText) timerText.innerText = timeLeft;
+
+                let percentage = (timeLeft / 30) * 100;
+                if(timerBar) timerBar.style.width = percentage + '%';
+
+                if (timeLeft <= 5 && timerBar) {
+                    timerBar.classList.remove('bg-blue-500');
+                    timerBar.classList.add('bg-red-500');
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(activeTimers[index]);
+                    const correctOption = reelElement.getAttribute('data-correct');
+                    const firstCorrectBtn = Array.from(reelElement.querySelectorAll('.option-btn')).find(btn => btn.querySelector('.badge').innerText === correctOption);
+                    if(firstCorrectBtn) checkAnswer(firstCorrectBtn, null);
+                }
+            }, 1000);
+        }
+
+        // विज़िबल स्क्रीन ट्रैकर (Observer)
+        function initScrollObserver() {
+            const observerOptions = { root: wrapper, threshold: 0.6 };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const reelIndex = entry.target.getAttribute('data-index');
+                        if (reelIndex !== null) startTimerForReel(entry.target, reelIndex);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reel-section').forEach(reel => {
+                observer.observe(reel);
+            });
+        }
+
+        // लूप रेंडरिंग मैनेजर
+        function renderReelsEngine() {
+            let combinedHTML = "";
+            let totalQuestions = 0;
+
+            // 25 सवाल जनरेट कर रहा हूँ ताकि 20वें सवाल के बाद एड ट्रिगर हो सके
+            for (let loop = 0; loop < 9; loop++) {
+                gkQuestionBank.forEach((item) => {
+                    combinedHTML += createQuestionReelHTML(item, totalQuestions);
+                    totalQuestions++;
+                });
+            }
+            contentContainer.innerHTML = combinedHTML;
+            setTimeout(initScrollObserver, 100);
+        }
+
+        function toggleLike(btn) {
+            const heartIcon = btn.querySelector('span:first-child');
+            const countSpan = btn.querySelector('.like-count');
+            let currentCount = parseInt(countSpan.innerText);
+            if (heartIcon.innerText === '🤍') {
+                heartIcon.innerText = '❤️'; countSpan.innerText = currentCount + 1; btn.classList.add('text-red-500');
+            } else {
+                heartIcon.innerText = '🤍'; countSpan.innerText = currentCount - 1; btn.classList.remove('text-red-500');
+            }
+        }
+
+        renderReelsEngine();
+    </script>
 </body>
 </html>
