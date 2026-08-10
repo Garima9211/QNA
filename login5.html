@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=375, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>The QNA Mobile Login</title>
     <style>
         /* बेसिक रिसेट */
@@ -13,47 +13,29 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
         }
 
-        /* डेस्कटॉप पर इसे फोन जैसा दिखाने के लिए बैकग्राउंड */
+        /* बॉडी - डार्क बैकग्राउंड और सेंटर अलाइनमेंट */
         body {
-            background-color: #e2e8f0;
+            background-color: #0f172a;
             display: flex;
             justify-content: center;
-            align-items: center;
             min-height: 100vh;
         }
 
-        /* पूरी तरह से फिक्स्ड मोबाइल फ्रेम (नॉन-रिस्पॉन्सिव) */
-        .mobile-frame {
-            width: 375px; 
-            height: 812px; 
-            background: #0f172a; 
-            border-radius: 40px; 
-            border: 8px solid #1e293b; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        /* मुख्य कंटेनर - मोबाइल साइज बनाए रखने के लिए */
+        .app-container {
+            width: 100%; 
+            max-width: 480px; डेस्कटॉप पर भी मोबाइल जैसा दिखेगा
+            min-height: 100vh; 
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        /* फोन का ऊपरी हिस्सा (Notch) */
-        .notch {
-            width: 150px;
-            height: 25px;
-            background: #1e293b;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            z-index: 20;
-        }
-
-        /* मुख्य कंटेंट एरिया - स्पेस कंट्रोल्ड */
+        /* मुख्य कंटेंट एरिया */
         .content {
             flex: 1;
-            padding: 30px 24px;
+            padding: 30px 50px;
             display: flex;
             flex-direction: column;
             justify-content: center; 
@@ -82,7 +64,7 @@
         }
 
         .logo span {
-            color: #38bdf8; 
+            color: #7C3AED
         }
 
         .subtitle {
@@ -92,7 +74,7 @@
             line-height: 1.6;
         }
 
-        /* बैकग्राउंड का ग्राफ़िक (ग्लो इफ़ेक्ट) */
+        /* बैकग्राउंड का ग्राफ़िक (ग्लो इफ़ेक्ट) */
         .glow-effect {
             position: absolute;
             top: 25%;
@@ -157,16 +139,15 @@
         }
 
         .footer-text a {
-            color: #38bdf8;
+            color: #FFFF;
             text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- मोबाइल स्क्रीन कंटेनर -->
-    <div class="mobile-frame">
-        <div class="notch"></div>
+    <!-- मुख्य कंटेनर -->
+    <div class="app-container">
         
         <!-- बैकग्राउंड ग्लो -->
         <div class="glow-effect"></div>
