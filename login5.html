@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375, user-scalable=no">
+    <title>The QNA Mobile Login</title>
+    <style>
+        /* बेसिक रिसेट */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+
+        /* डेस्कटॉप पर इसे फोन जैसा दिखाने के लिए बैकग्राउंड */
+        body {
+            background-color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* पूरी तरह से फिक्स्ड मोबाइल फ्रेम (नॉन-रिस्पॉन्सिव) */
+        .mobile-frame {
+            width: 375px; 
+            height: 812px; 
+            background: #0f172a; 
+            border-radius: 40px; 
+            border: 8px solid #1e293b; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* फोन का ऊपरी हिस्सा (Notch) */
+        .notch {
+            width: 150px;
+            height: 25px;
+            background: #1e293b;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 20;
+        }
+
+        /* मुख्य कंटेंट एरिया - स्पेस कंट्रोल्ड */
+        .content {
+            flex: 1;
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            z-index: 10;
+        }
+
+        /* हैडर और ब्रांडिंग - सेंटर अलाइन */
+        .header {
+            text-align: center;
+            margin-bottom: 60px; 
+        }
+
+        .welcome-text {
+            color: #94a3b8;
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .logo {
+            font-size: 56px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #38bdf8; 
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 16px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* बैकग्राउंड का ग्राफ़िक (ग्लो इफ़ेक्ट) */
+        .glow-effect {
+            position: absolute;
+            top: 25%;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(15,23,42,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .glow-effect-2 {
+            position: absolute;
+            bottom: 20%;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, rgba(15,23,42,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* बॉटम बटन एरिया */
+        .action-area {
+            width: 100%;
+        }
+
+        /* बड़ा मोबाइल-स्टाइल Google बटन */
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #ffffff;
+            color: #0f172a;
+            border: none;
+            padding: 18px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.1s;
+        }
+
+        .google-btn img {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+        }
+
+        .google-btn:active {
+            transform: scale(0.96); 
+        }
+
+        /* फुटर टेक्स्ट */
+        .footer-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 25px;
+        }
+
+        .footer-text a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- मोबाइल स्क्रीन कंटेनर -->
+    <div class="mobile-frame">
+        <div class="notch"></div>
+        
+        <!-- बैकग्राउंड ग्लो -->
+        <div class="glow-effect"></div>
+        <div class="glow-effect-2"></div>
+
+        <div class="content">
+            <!-- हेडर और लोगो सेंटर में -->
+            <div class="header">
+                <div class="welcome-text">Welcome to</div>
+                <div class="logo">The <span>QNA</span></div>
+                <div class="subtitle">भारत का सबसे स्मार्ट प्रैक्टिस प्लेटफ़ॉर्म।<br>अपनी तैयारी को दें एक नई दिशा।</div>
+            </div>
+
+            <div class="action-area">
+                <!-- केवल Google बटन -->
+                <button class="google-btn" onclick="handleMobileGoogleLogin()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
+                    Continue with Google
+                </button>
+                <div class="footer-text">
+                    लॉग इन करके आप हमारी <a href="#">Terms & Conditions</a> स्वीकार करते हैं।
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleMobileGoogleLogin() {
+            alert("The QNA में आपका स्वागत है! Google Account चुनने वाला पॉप-अप यहाँ दिखेगा।");
+        }
+    </script>
+
+</body>
+</html>
