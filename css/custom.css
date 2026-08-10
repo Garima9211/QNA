@@ -1046,9 +1046,11 @@ body {
     align-items: center;
     gap: 18px;
     padding-bottom: 4px;
+   
 }
 
-.action-btn {
+ .action-btn { 
+    
     background: transparent;
     border: none;
     color: #ffffff;
