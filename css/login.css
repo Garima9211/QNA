@@ -1,35 +1,25 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>The QNA Mobile Login</title>
-    <style>
-        /* बेसिक रिसेट */
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        }
-
-        /* बॉडी - डार्क बैकग्राउंड और सेंटर अलाइनमेंट */
+/*==========================
+ LOGIN PAGE CSS    
+ ==========================*/
+   /* बॉडी - डार्क बैकग्राउंड और सेंटर अलाइनमेंट */
         body {
             background-color: #0f172a;
             display: flex;
             justify-content: center;
-            min-height: 100vh;
+            min-height: 100vh;  
         }
-
-        /* मुख्य कंटेनर - मोबाइल साइज बनाए रखने के लिए */
+ /* मुख्य कंटेनर - मोबाइल साइज बनाए रखने के लिए */
         .app-container {
             width: 100%; 
-            max-width: 480px; डेस्कटॉप पर भी मोबाइल जैसा दिखेगा
-            min-height: 100vh; 
+            max-width: 480px; /* डेस्कटॉप पर भी मोबाइल जैसा दिखेगा */
+            margin:30px;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            border: #64748b 1px solid;
+            border-radius:20px;
+           
         }
 
         /* मुख्य कंटेंट एरिया */
@@ -56,8 +46,8 @@
         }
 
         .logo {
-            font-size: 56px;
-            font-weight: 800;
+            font-size: 50px;
+            font-weight: 600;
             color: #ffffff;
             line-height: 1.1;
             letter-spacing: -1px;
@@ -77,10 +67,7 @@
         /* बैकग्राउंड का ग्राफ़िक (ग्लो इफ़ेक्ट) */
         .glow-effect {
             position: absolute;
-            top: 25%;
-            right: -50px;
-            width: 300px;
-            height: 300px;
+           
             background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(15,23,42,0) 70%);
             border-radius: 50%;
             z-index: 0;
@@ -142,43 +129,3 @@
             color: #FFFF;
             text-decoration: none;
         }
-    </style>
-</head>
-<body>
-
-    <!-- मुख्य कंटेनर -->
-    <div class="app-container">
-        
-        <!-- बैकग्राउंड ग्लो -->
-        <div class="glow-effect"></div>
-        <div class="glow-effect-2"></div>
-
-        <div class="content">
-            <!-- हेडर और लोगो सेंटर में -->
-            <div class="header">
-                <div class="welcome-text">Welcome to</div>
-                <div class="logo">The <span>QNA</span></div>
-                <div class="subtitle">भारत का सबसे स्मार्ट प्रैक्टिस प्लेटफ़ॉर्म।<br>अपनी तैयारी को दें एक नई दिशा।</div>
-            </div>
-
-            <div class="action-area">
-                <!-- केवल Google बटन -->
-                <button class="google-btn" onclick="handleMobileGoogleLogin()">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
-                    Continue with Google
-                </button>
-                <div class="footer-text">
-                    लॉग इन करके आप हमारी <a href="#">Terms & Conditions</a> स्वीकार करते हैं।
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function handleMobileGoogleLogin() {
-            alert("The QNA में आपका स्वागत है! Google Account चुनने वाला पॉप-अप यहाँ दिखेगा।");
-        }
-    </script>
-
-</body>
-</html>

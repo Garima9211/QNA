@@ -1380,120 +1380,8 @@ i
 .icon-orange { background-color: #ffedd5; }
 .icon-indigo { background-color: #e0e7ff; }
 .icon-pink { background-color: #fce7f3; }
-/*LOGIN.CSS*/
----------------------------
-       :root {
-            --bg-dark: #0B0F19;
-            --accent: #6B2FBF;
-            --accent-btn: #6B2FBF; 
-            --accent-hover: #7112f5;
-            --border: rgba(255, 255, 255, 0.06);
-            --text-main: #FFFFFF;
-            --text-sub: #9CA3AF;  
-            --input-bg: #FFFFFF;
-            --input-text: #000000;
-           
-        }
-       
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            overscroll-behavior-y: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-            
-            
-       
-  .login-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 200px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .logo-1 {
-            font-size: 36px;
-            font-weight: 900;
-            color: var(--accent);
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
-
-        .subtitle {
-            color: var(--text-sub);
-            margin-bottom: 32px;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        /* === Input Styles === */
-        .input-field {
-            width: 100%;
-            max-width: 384px;
-            padding: 16px;
-            border-radius: 12px;
-            background-color: var(--input-bg);
-            color: var(--input-text);
-            border: 2px solid transparent;
-            outline: none;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .input-field::placeholder {
-            color: #6B7280;
-        }
-
-        /* Focus Effect */
-        .input-field:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
-        }
-
-        .mb-4 { margin-bottom: 16px; }
-        .mb-6 { margin-bottom: 24px; }
-
-        /* === Button Styles === */
-        .btn-primary {
-            background-color: var(--accent-btn);
-            color: #FFFFFF;
-            padding: 16px 40px;
-            border-radius: 9999px;
-            font-weight: 900;
-            font-size: 20px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-            font-family: inherit;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
-        }
-
-        /* Click/Touch Effect */
-        .btn-primary:active {
-            transform: scale(0.95);
-        }
 
 /*AFTERLOGIN TEST START  CSS*/
 /* Body Layout for Desktop Centering */
@@ -2687,16 +2575,17 @@ body {
             margin-bottom: 5px;
             font-size: 15px;
             font-weight: 100;
+            margin-left:5px;
             border: 1px solid var(--border);
                 /* transition: transform 0.15s ease; */
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
         /* Hover effect */
-        .month-card:hover .month-box {
+        /* .month-card:hover .month-box {
             transform: translateY(-5px);
             background-color: #27354c;
-        }
+        } */
 
         /* Niche likha hua text */
         .month-label {
