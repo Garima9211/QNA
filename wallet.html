@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375, user-scalable=no">
+    <title>The QNA Store</title>
+    <style>
+        /* प्रीमियम फोंट्स और रिसेट */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* फिक्स्ड मोबाइल फ्रेम */
+        .mobile-frame {
+            width: 375px; 
+            height: 812px; 
+            background: #090a0f; 
+            border-radius: 40px; 
+            border: 8px solid #1e293b; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notch {
+            width: 150px;
+            height: 25px;
+            background: #1e293b;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 20;
+        }
+
+        /* -------------------------------------------
+           HEADER PLACEHOLDER (डिज़ाइनर के लिए जगह)
+        ---------------------------------------------*/
+        .header-placeholder {
+            height: 70px;
+            margin-top: 30px;
+            margin-bottom: 20px; /* थोड़ा मार्जिन बढ़ाया गया है */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1.5px dashed #334155;
+            color: #64748b;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            margin-inline: 16px;
+        }
+
+        /* -------------------------------------------
+           FOOTER PLACEHOLDER (डिज़ाइनर के लिए जगह)
+        ---------------------------------------------*/
+        .footer-placeholder {
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1.5px dashed #334155;
+            color: #64748b;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 10px 16px 20px;
+            border-radius: 8px;
+        }
+
+        /* स्क्रॉल होने वाला मुख्य कंटेंट एरिया */
+        .content {
+            flex: 1;
+            padding: 0 16px; 
+            overflow-y: auto;
+        }
+        
+        /* स्क्रॉलबार छिपाने के लिए */
+        .content::-webkit-scrollbar { display: none; }
+
+        /* टॉप कॉइन बैलेंस कार्ड */
+        .balance-card {
+            background-color: #12141d;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .balance-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .coin-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #ffc107;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #b45309;
+            font-weight: bold;
+            font-size: 16px;
+            border: 2px solid #fff3cd;
+        }
+
+        .balance-text .low-balance {
+            color: #ef4444; 
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .balance-text .coins {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .arrow-right {
+            color: #64748b;
+            font-size: 20px;
+        }
+
+        /* My Coin History बटन */
+        .history-btn {
+            background-color: #1e293b; 
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .history-btn:active {
+            background-color: #334155;
+            transform: scale(0.98);
+        }
+
+        .history-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .history-icon {
+            width: 32px;
+            height: 32px;
+            background-color: rgba(56, 189, 248, 0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #38bdf8;
+            font-size: 16px;
+        }
+
+        .history-text {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* सेक्शन टाइटल */
+        .section-title {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* लिस्ट आइटम (Ads और Offers) */
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-left {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .bonus-tag {
+            background-color: #332900;
+            color: #eab308;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            width: fit-content;
+            font-weight: 500;
+        }
+
+        .coin-amount {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .small-coin {
+            width: 18px;
+            height: 18px;
+            background-color: #ffc107;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: #b45309;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .sub-text {
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        /* बटन डिज़ाइन */
+        .action-btn {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        /* लिमिटेड टाइम ऑफर कार्ड */
+        .offer-card {
+            background-color: #0b1c12; 
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            border: 1px solid #166534;
+        }
+
+        .offer-tag {
+            background-color: #22c55e;
+            color: black;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .green-btn {
+            background-color: #22c55e;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="mobile-frame">
+        <div class="notch"></div>
+
+        <!-- 1. हेडर के लिए खाली जगह (Designer Space) -->
+        <div class="header-placeholder">
+            [ Designer: Insert App Header Here ]
+        </div>
+
+        <!-- 2. स्क्रॉल होने वाला मुख्य पेज -->
+        <div class="content">
+
+            <!-- टॉप बैलेंस कार्ड -->
+            <div class="balance-card">
+                <div class="balance-left">
+                    <div class="coin-icon">P</div>
+                    <div class="balance-text">
+                        <div class="low-balance">Low Coin balance</div>
+                        <div class="coins">0 Coins</div>
+                    </div>
+                </div>
+                <div class="arrow-right">›</div>
+            </div>
+
+            <!-- My Coin History बटन -->
+            <div class="history-btn" onclick="alert('Coin History पेज यहाँ खुलेगा')">
+                <div class="history-left">
+                    <div class="history-icon">📜</div>
+                    <div class="history-text">My Coin History</div>
+                </div>
+                <div class="arrow-right">›</div>
+            </div>
+
+            <!-- Watch Ads सेक्शन (1 Ad = 10 Coins) -->
+            <div class="section-title">Watch ads and earn coins</div>
+            
+            <!-- 1 Ad = 10 Coins -->
+            <div class="list-item">
+                <div class="item-left">
+                    <div class="coin-amount"><span class="small-coin">P</span> 10 <span class="sub-text">coins</span></div>
+                </div>
+                <button class="action-btn">1 ad</button>
+            </div>
+
+            <!-- 7 Ads = 100 Coins (43% Bonus) -->
+            <div class="list-item">
+                <div class="item-left">
+                    <div class="bonus-tag">43% bonus</div>
+                    <div class="coin-amount"><span class="small-coin">P</span> 100 <span class="sub-text">coins</span></div>
+                </div>
+                <button class="action-btn">7 ads</button>
+            </div>
+
+            <!-- 13 Ads = 200 Coins (54% Bonus) -->
+            <div class="list-item" style="border-bottom: none;">
+                <div class="item-left">
+                    <div class="bonus-tag">54% bonus</div>
+                    <div class="coin-amount"><span class="small-coin">P</span> 200 <span class="sub-text">coins</span></div>
+                </div>
+                <button class="action-btn">13 ads</button>
+            </div>
+
+            <!-- लिमिटेड टाइम ऑफर (3000 Coins / ₹49) -->
+            <div class="section-title">Limited Time Offer</div>
+            
+            <div class="offer-card">
+                <div>
+                    <div class="offer-tag">Mega Saver Pack</div>
+                    <div class="coin-amount"><span class="small-coin">P</span> 3000 <span class="sub-text">coins</span></div>
+                </div>
+                <button class="action-btn green-btn">
+                    ₹49
+                </button>
+            </div>
+
+        </div>
+
+        <!-- 3. फुटर / नेविगेशन के लिए खाली जगह (Designer Space) -->
+        <div class="footer-placeholder">
+            [ Designer: Insert Bottom Navigation Here ]
+        </div>
+
+    </div>
+
+</body>
+</html>
