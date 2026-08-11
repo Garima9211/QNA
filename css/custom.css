@@ -362,7 +362,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-sub);
+            /* color: var(--text-sub); */
+           
             position: relative;
             transition: transform 0.15s ease;
         }
@@ -561,6 +562,9 @@
         .c-pink { color: #F472B6; }
         .c-youtube { color: #DC2626; }
         .c-facebook { color: #2563EB; }
+       
+            
+        
 
         /* Test Series List */
         .test-list {
@@ -917,7 +921,8 @@ body {
 .header-actions .icon-btn {
     background: #1e293b;
     border: none;
-    color: #94a3b8;
+    /* color: #94a3b8; */
+    color:#fff;
     width: 36px;
     height: 36px;
     border-radius: 50%;
