@@ -17,8 +17,8 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: #64748b 1px solid;
-            border-radius:20px;
+            /* border: #64748b 1px solid;
+            border-radius:20px; */
            
         }
 
