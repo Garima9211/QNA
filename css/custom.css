@@ -1924,12 +1924,12 @@ html {
             gap: 24px;
         }
 
-        @media (min-width: 768px) {
+        /* @media (min-width: 768px) {
             .main-heading { font-size: 48px; }
             .nav-links { gap: 32px; font-size: 12px; }
             .content-grid { grid-template-columns: repeat(3, 1fr); }
             .col-span-2 { grid-column: span 2 / span 2; }
-        }
+        } */
 
         /* === 6. पेमेंट सेक्शन कॉम्पोनेंट्स === */
         .payment-card {
