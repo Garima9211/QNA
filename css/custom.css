@@ -2587,10 +2587,10 @@ body {
         .m-dec { color: #f43f5e; }
 /*==========================
        OFFER CSS
-===========================*/
-/* हॉरिजॉन्टल केटेगरी स्लाइडर */
-        .category-slider {
-            display: flex; gap: 10px; padding: 0 16px 16px; overflow-x: auto; scrollbar-width: none;
+===========================*
+ /* हॉरिजॉन्टल केटेगरी स्लाइडर */
+        .category-slider{
+            display: flex; gap: 10px; padding: 50px 16px 16px; overflow-x: auto; scrollbar-width: none;
         }
         .category-slider::-webkit-scrollbar { display: none; }
 
@@ -2655,40 +2655,3 @@ body {
             border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer;
         }
         .btn-action:active { transform: scale(0.95); }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-       
-
-        
- 
