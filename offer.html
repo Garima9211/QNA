@@ -2,338 +2,123 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=375, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The QNA - Offer Wall</title>
-    <style>
-        /* प्रीमियम फोंट्स और रिसेट */
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            -webkit-font-smoothing: antialiased;
-        }
+    <link rel="stylesheet" href="css/custom.css">
 
-        body {
-            background-color: #e2e8f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* फिक्स्ड मोबाइल फ्रेम */
-        .mobile-frame {
-            width: 375px; 
-            height: 812px; 
-            background: #090a0f; 
-            border-radius: 40px; 
-            border: 8px solid #1e293b; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .notch {
-            width: 150px;
-            height: 25px;
-            background: #1e293b;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            z-index: 20;
-        }
-
-        /* -------------------------------------------
-           HEADER & FOOTER PLACEHOLDERS 
-        ---------------------------------------------*/
-        .header-placeholder {
-            height: 60px;
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            color: #475569;
-            font-size: 12px;
-            border-radius: 8px;
-            margin-inline: 16px;
-            flex-shrink: 0;
-        }
-
-        .footer-placeholder {
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            color: #475569;
-            font-size: 12px;
-            margin: 10px 16px 20px;
-            border-radius: 8px;
-            flex-shrink: 0;
-        }
-
-        /* -------------------------------------------
-           हॉरिजॉन्टल केटेगरी स्लाइडर (Left to Right)
-        ---------------------------------------------*/
-        .category-slider {
-            display: flex;
-            gap: 10px;
-            padding: 16px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-        }
-
-        /* स्लाइडर का स्क्रॉलबार छिपाने के लिए */
-        .category-slider::-webkit-scrollbar { display: none; }
-
-        .cat-pill {
-            background-color: #1e293b;
-            color: #cbd5e1;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            white-space: nowrap;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        /* एक्टिव केटेगरी का डिज़ाइन */
-        .cat-pill.active {
-            background-color: #38bdf8;
-            color: #0f172a;
-            border-color: #38bdf8;
-            box-shadow: 0 4px 10px rgba(56, 189, 248, 0.3);
-        }
-
-        /* कंटेंट एरिया (ऑफर लिस्टिंग) */
-        .content {
-            flex: 1;
-            padding: 0 16px; 
-            overflow-y: auto;
-        }
-        
-        .content::-webkit-scrollbar { display: none; }
-
-        .section-title {
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .coin-balance {
-            background-color: rgba(255, 193, 7, 0.1);
-            color: #ffc107;
-            font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* ऑफर कार्ड्स का डिज़ाइन */
-        .offer-card {
-            background-color: #12141d;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .offer-top {
-            display: flex;
-            gap: 14px;
-            align-items: center;
-        }
-
-        .offer-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        .icon-card { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-        .icon-app { background: linear-gradient(135deg, #10b981, #047857); }
-        .icon-game { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-
-        .offer-details {
-            flex: 1;
-        }
-
-        .offer-title {
-            color: white;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .offer-desc {
-            color: #64748b;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-
-        .offer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 12px;
-            border-top: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-
-        /* रिवॉर्ड टैग (क्रेडिट कार्ड - 500 Coins) */
-        .reward-tag {
-            background-color: rgba(34, 197, 94, 0.15);
-            color: #22c55e;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 6px 12px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .coin-p {
-            font-size: 10px;
-            background-color: #22c55e;
-            color: #0f172a;
-            width: 14px;
-            height: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            font-weight: bold;
-        }
-
-        /* एक्शन बटन */
-        .btn-action {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .btn-action:active {
-            transform: scale(0.95);
-        }
-
-    </style>
 </head>
 <body>
 
-    <div class="mobile-frame">
-        <div class="notch"></div>
+    <!-- 1. Header -->
+    <header>
+    <div class="app-container header-inner">
 
-        <!-- 1. Header Placeholder -->
-        <div class="header-placeholder">
-            [ Designer: Insert App Header Here ]
+        <div class="logo-box">
+            <div class="logo-icon">Q</div>
+            <h1 class="logo-title">The <span>QNA</span></h1>
         </div>
+           <div class="header-actions">
+              <button class="icon-btn" onclick="openWallet()" aria-label="Wallet">
+              <i class="fa-solid fa-wallet"></i>
+            </button>
 
-        <!-- 2. हॉरिजॉन्टल स्लाइडर (कैटेगरीज़) -->
-        <div class="category-slider">
-            <div class="cat-pill active">All Offers</div>
-            <div class="cat-pill">Credit Cards</div>
-            <div class="cat-pill">Apps</div>
-            <div class="cat-pill">Games</div>
-            <div class="cat-pill">Surveys</div>
-        </div>
-
-        <!-- 3. मेन कंटेंट (ऑफर लिस्टिंग) -->
-        <div class="content">
-            
-            <div class="section-title">
-                Trending Offers
-                <div class="coin-balance">P 3060</div>
             </div>
-
-            <!-- ऑफर 1: क्रेडिट कार्ड (500 Coins) -->
-            <div class="offer-card">
-                <div class="offer-top">
-                    <div class="offer-icon icon-card">💳</div>
-                    <div class="offer-details">
-                        <div class="offer-title">HDFC Credit Card</div>
-                        <div class="offer-desc">Apply for a new HDFC lifetime free credit card and get approved.</div>
-                    </div>
-                </div>
-                <div class="offer-bottom">
-                    <div class="reward-tag">
-                        +500 <span class="coin-p">P</span>
-                    </div>
-                    <button class="btn-action">Apply Now</button>
-                </div>
-            </div>
-
-            <!-- ऑफर 2: ऐप इंस्टॉल (100 Coins) -->
-            <div class="offer-card">
-                <div class="offer-top">
-                    <div class="offer-icon icon-app">📱</div>
-                    <div class="offer-details">
-                        <div class="offer-title">Kuku FM App</div>
-                        <div class="offer-desc">Install the app, register with phone number and listen to 1 audio.</div>
-                    </div>
-                </div>
-                <div class="offer-bottom">
-                    <div class="reward-tag">
-                        +100 <span class="coin-p">P</span>
-                    </div>
-                    <button class="btn-action">Install App</button>
-                </div>
-            </div>
-
-            <!-- ऑफर 3: गेम (250 Coins) -->
-            <div class="offer-card">
-                <div class="offer-top">
-                    <div class="offer-icon icon-game">🎮</div>
-                    <div class="offer-details">
-                        <div class="offer-title">Dream11 Fantasy</div>
-                        <div class="offer-desc">Download, create an account and play your first fantasy match.</div>
-                    </div>
-                </div>
-                <div class="offer-bottom">
-                    <div class="reward-tag">
-                        +250 <span class="coin-p">P</span>
-                    </div>
-                    <button class="btn-action">Play Now</button>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- 4. Footer Placeholder -->
-        <div class="footer-placeholder">
-            [ Designer: Insert Bottom Navigation Here ]
-        </div>
-
     </div>
+</header>
+
+    <!-- 2. हॉरिजॉन्टल स्लाइडर -->
+    <div class="category-slider">
+        <div class="cat-pill active">All Offers</div>
+        <div class="cat-pill">Credit Cards</div>
+        <div class="cat-pill">Apps</div>
+        <div class="cat-pill">Games</div>
+        <div class="cat-pill">Surveys</div>
+    </div>
+
+    <!-- 3. मेन कंटेंट -->
+    <div class="content">
+        <div class="section-title">
+            Trending Offers
+            <div class="coin-balance">P 3060</div>
+        </div>
+
+        <!-- कार्ड 1 -->
+        <div class="offer-card">
+            <div class="offer-top">
+                <div class="offer-icon icon-card">💳</div>
+                <div>
+                    <div class="offer-title">HDFC Credit Card</div>
+                    <div class="offer-desc">Apply for a new HDFC lifetime free credit card and get approved.</div>
+                </div>
+            </div>
+            <div class="offer-bottom">
+                <div class="reward-tag">+500 <span class="coin-p">P</span></div>
+                <button class="btn-action">Apply Now</button>
+            </div>
+        </div>
+
+        <!-- कार्ड 2 -->
+        <div class="offer-card">
+            <div class="offer-top">
+                <div class="offer-icon icon-app">📱</div>
+                <div>
+                    <div class="offer-title">Kuku FM App</div>
+                    <div class="offer-desc">Install the app, register with phone number and listen to 1 audio.</div>
+                </div>
+            </div>
+            <div class="offer-bottom">
+                <div class="reward-tag">+100 <span class="coin-p">P</span></div>
+                <button class="btn-action">Install App</button>
+            </div>
+        </div>
+
+        <!-- कार्ड 3 -->
+        <div class="offer-card">
+            <div class="offer-top">
+                <div class="offer-icon icon-game">🎮</div>
+                <div>
+                    <div class="offer-title">Dream11 Fantasy</div>
+                    <div class="offer-desc">Download, create an account and play your first fantasy match.</div>
+                </div>
+            </div>
+            <div class="offer-bottom">
+                <div class="reward-tag">+250 <span class="coin-p">P</span></div>
+                <button class="btn-action">Play Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Footer -->
+    <nav>
+        <div class="app-container nav-inner">
+            <a href="./index.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span class="nav-label nav-label-active">Home</span>
+                <div class="active-dot"></div>
+            </a>
+
+            <a href="./feed.html" class="nav-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="nav-label">Feed</span>
+            </a>
+            <div class="fab-wrapper">
+          <a href="./offer.html" aria-label="Add Question" class="pro-fab">
+               <!-- <i class="fa-solid fa-plus"></i> -->
+                <span class="nav-label">My Offer</span>
+            </a>
+         </div>
+
+            <a href="./category.html" class="nav-item">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="nav-label">Test</span>
+            </a>
+
+            <a href="login.html" onclick="openProfile()" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span class="nav-label">Me</span>
+            </a>
+        </div>
+    </nav>
 
 </body>
 </html>
