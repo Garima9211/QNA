@@ -84,7 +84,7 @@
             z-index: 0;
         }
 
-        /* बॉटम बटन एरिया */
+      
        
 
         /* बड़ा मोबाइल-स्टाइल Google बटन */
@@ -96,10 +96,10 @@
             background-color: #ffffff;
             color: #0f172a;
             border: none;
-            padding: 10px;
+            padding: 18px;
             border-radius: 20px;
             font-size: x-small;
-            font-weight: 500;
+            font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
             transition: transform 0.1s;
