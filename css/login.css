@@ -85,9 +85,9 @@
         }
 
         /* बॉटम बटन एरिया */
-        .action-area {
+        /* .action-area {
             width: 100%;
-        }
+        } */
 
         /* बड़ा मोबाइल-स्टाइल Google बटन */
         .google-btn {
@@ -95,23 +95,19 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            background-color: #ffffff;
+            /* background-color: #ffffff; */
             color: #0f172a;
             border: none;
-            padding: 18px;
-            border-radius: 30px;
-            font-size: 18px;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 10px;
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
             transition: transform 0.1s;
         }
 
-        .google-btn img {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-        }
+     
 
         .google-btn:active {
             transform: scale(0.96); 
