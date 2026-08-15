@@ -23,16 +23,16 @@
         }
 
         /* मुख्य कंटेंट एरिया */
-        .content {
+        /* .content {
             flex: 1;
             padding: 30px 50px;
             display: flex;
             flex-direction: column;
             justify-content: center; 
             z-index: 10;
-        }
+        } */
         img {
-            padding-right:1px;
+            padding-right:5px;
 
    
 }
