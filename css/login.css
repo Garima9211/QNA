@@ -31,6 +31,11 @@
             justify-content: center; 
             z-index: 10;
         }
+        img {
+            padding-right:10px;
+
+   
+}
 
         /* हैडर और ब्रांडिंग - सेंटर अलाइन */
         .header {
