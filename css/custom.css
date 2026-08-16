@@ -1176,101 +1176,99 @@ body {
 /* ==========================================
    ADVERTISEMENT MODAL
    ========================================== */
-/* Custom variables fallback ke saath */
-:root {
-  --accent-amber: #ffbf00;
-  --text-secondary: #94a3b8;
-}
-
 .modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  z-index: 100;
-  padding: 20px;
-  box-sizing: border-box;
-}
+     position: fixed;
+     inset: 0;
+     z-index: 1000;
+     background: rgba(0, 0, 0, 0.95);
+     backdrop-filter: blur(16px);
+     -webkit-backdrop-filter: blur(16px);
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding: 0 16px;
+ }
 
-/* Modal tabhi dikhega aur center hoga jab JavaScript se flex-show class lagegi */
-.modal-overlay.flex-show {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+ .modal-overlay.flex-show {
+     display: flex;
+ }
 
-.ad-modal-content {
-  background: #1e293b;
-  border-radius: 16px;
-  padding: 24px;
-  width: 100%;
-  max-width: 320px;
-  text-align: center;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-sizing: border-box;
-}
+ .close-ad-btn {
+     position: absolute;
+     top: 48px;
+     right: 24px;
+     width: 40px;
+     height: 40px;
+     background: rgba(255, 255, 255, 0.1);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     border-radius: 50%;
+     color: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+ }
 
-.close-ad-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: #fff;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  cursor: pointer;
-  /* Icon / X text ko button ke bilkul center mein karne ke liye */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  line-height: 1;
-}
+ .ad-tag {
+     background-color: #1f2937;
+     color: #9ca3af;
+     font-size: 10px;
+     font-weight: 700;
+     padding: 4px 12px;
+     border-radius: 2px;
+     text-transform: uppercase;
+     letter-spacing: 0.15em;
+     margin-bottom: 16px;
+ }
 
-.ad-tag {
-  font-size: 0.65rem;
-  background: var(--accent-amber, #ffbf00);
-  color: #000;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 800;
-  text-transform: uppercase;
-  display: inline-block;
-}
+ .ad-card {
+     width: 100%;
+     max-width: 350px;
+     height: 300px;
+     background-color: #111111;
+     border: 1px solid rgba(255, 255, 255, 0.1);
+     border-radius: 16px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+     
+ }
 
-.ad-icon {
-  font-size: 2.2rem;
-  margin: 15px 0 10px;
-  color: #fff;
-}
+ .ad-card i {
+     font-size: 36px;
+     color: #6b7280;
+     margin-bottom: 16px;
+ }
 
-.ad-title {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  color: #ffffff;
-}
+ .ad-title {
+     font-size: 18px;
+     font-weight: 700;
+     color: #e5e7eb;
+     text-align: center;
+ }
 
-.ad-desc {
-  font-size: 0.8rem;
-  color: var(--text-secondary, #94a3b8);
-  margin-bottom: 16px;
-  line-height: 1.4;
-}
+ .ad-desc {
+     font-size: 12px;
+     color: #6b7280;
+     margin-top: 8px;
+     text-align: center;
+ }
 
-.skip-btn {
-  background: var(--accent-amber, #ffbf00);
-  border: none;
-  color: #000;
-  font-weight: 700;
-  padding: 8px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-}
+ .skip-btn {
+     margin-top: 24px;
+     background: #ffffff;
+     color: #000000;
+     font-weight: 800;
+     padding: 12px 40px;
+     border: none;
+     border-radius: 9999px;
+     font-size: 14px;
+     cursor: pointer;
+ }
+
   /*==========GK_CATEGORY.CSS========*/
 * Main Layout */
 .main-container {
