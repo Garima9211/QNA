@@ -1176,82 +1176,100 @@ body {
 /* ==========================================
    ADVERTISEMENT MODAL
    ========================================== */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+/* Custom variables fallback ke saath */
+:root {
+  --accent-amber: #ffbf00;
+  --text-secondary: #94a3b8;
 }
 
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Modal tabhi dikhega aur center hoga jab JavaScript se flex-show class lagegi */
 .modal-overlay.flex-show {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ad-modal-content {
-    background: #1e293b;
-    border-radius: 16px;
-    padding: 24px;
-    width: 100%;
-    max-width: 320px;
-    text-align: center;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
 }
 
 .close-ad-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #fff;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  /* Icon / X text ko button ke bilkul center mein karne ke liye */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
 .ad-tag {
-    font-size: 0.65rem;
-    background: var(--accent-amber);
-    color: #000;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 800;
-    text-transform: uppercase;
+  font-size: 0.65rem;
+  background: var(--accent-amber, #ffbf00);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
 .ad-icon {
-    font-size: 2.2rem;
-    margin: 15px 0 10px;
-    color: #fff;
+  font-size: 2.2rem;
+  margin: 15px 0 10px;
+  color: #fff;
 }
 
 .ad-title {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #ffffff;
 }
 
 .ad-desc {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    line-height: 1.4;
+  font-size: 0.8rem;
+  color: var(--text-secondary, #94a3b8);
+  margin-bottom: 16px;
+  line-height: 1.4;
 }
+
 .skip-btn {
-    background: var(--accent-amber);
-    border: none;
-    color: #000;
-    font-weight: 700;
-    padding: 8px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
+  background: var(--accent-amber, #ffbf00);
+  border: none;
+  color: #000;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
 }
   /*==========GK_CATEGORY.CSS========*/
 * Main Layout */
