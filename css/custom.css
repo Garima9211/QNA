@@ -1068,7 +1068,7 @@ body {
 
 .line-clamp-2 {
     display: -webkit-box;
-   
+    padding-top: -50px;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
