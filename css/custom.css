@@ -929,9 +929,9 @@ body {
 /* Reel Item Layout */
 .reel-item {
     height: calc(100vh - var(--header-height) - var(--nav-height)); 
-    height: calc(100dvh - var(--header-height) - var(--nav-height));
+    height: calc(112dvh - var(--header-height) - var(--nav-height));
     scroll-snap-align: start;
-    padding: 85px 16px;
+    padding: 65px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
