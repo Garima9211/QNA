@@ -97,23 +97,20 @@
         }
 
         /* बड़ा मोबाइल-स्टाइल Google बटन */
-        .google-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background-color: #ffffff;
-            color: #0f172a;
-            border: none;
-            padding: 10px;
-            border-radius: 20px;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-           
-           
-        }
-
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content; /* Full width hatakar sirf required size lega */
+    background-color: #ffffff;
+    color: #0f172a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
      
 
         .google-btn:active {
