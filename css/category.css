@@ -1,0 +1,217 @@
+   /* Dark Theme Base Styles */
+    :root {
+        --bg-main: #0d0f17;
+        --bg-card: #161b26;
+        --bg-option: #212836;
+        --border-color: #2e374a;
+        --text-primary: #ffffff;
+        --text-secondary: #9da8be;
+        --accent-purple: #8b5cf6;
+        --accent-green: #10b981;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+        background-color: #090a0f;
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 12px 16px;
+    }
+
+    .header-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo-icon {
+        background: var(--accent-purple);
+        color: white;
+        font-weight: bold;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-size: 20px;
+    }
+
+    .logo-title {
+        font-size: 20px;
+        color: #fff;
+    }
+
+    .logo-title span {
+        color: var(--accent-purple);
+    }
+
+    .icon-btn {
+        background: #1e2430;
+        border: none;
+        color: white;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Main Container */
+    .main-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 16px;
+    }
+
+    /* Filters */
+    .filters-wrapper {
+        margin-bottom: 20px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .mobile-filter-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .filter-box {
+        background-color: var(--bg-card);
+        color: var(--text-secondary);
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        font-size: 14px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+    }
+
+    .filter-box.active, .filter-box:hover {
+        background-color: var(--accent-purple);
+        color: white;
+        border-color: var(--accent-purple);
+    }
+
+    /* Test Cards */
+    .tests-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .test-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .unlocked-badge {
+        background-color: rgba(16, 185, 129, 0.15);
+        color: var(--accent-green);
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+
+    .test-id {
+        color: var(--text-secondary);
+        font-size: 14px;
+    }
+
+    .question-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 14px;
+        color: var(--text-primary);
+    }
+
+    /* Options */
+    .options-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .option-item {
+        background-color: var(--bg-option);
+        border: 1px solid var(--border-color);
+        padding: 12px 14px;
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+        border-color: var(--accent-purple);
+    }
+
+    .option-item.selected {
+        background-color: rgba(139, 92, 246, 0.2);
+        border-color: var(--accent-purple);
+        color: #ffffff;
+    }
+
+    /* Continue Button */
+    .continue-btn {
+        display: block;
+        text-align: center;
+        background-color: var(--accent-purple);
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s;
+    }
+
+    .continue-btn:hover {
+        background-color: #7c3aed;
+    }
+
+    .empty-msg {
+        text-align: center;
+        color: var(--text-secondary);
+        padding: 40px 0;
+    }
