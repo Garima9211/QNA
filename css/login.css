@@ -48,7 +48,8 @@
             font-size: 20px;
             margin-bottom: 8px;
             margin-top: 150px;
-            font-weight: 500;
+            font-weight: 600;
+            margin-right: 100px;
         }
 
         .logo {
@@ -57,6 +58,7 @@
             color: #ffffff;
             line-height: 1.1;
             letter-spacing: -1px;
+            margin-right: 100px;
         }
 
         .logo span {
@@ -69,28 +71,7 @@
             margin-top: 20px;
             line-height: 1.6;
         }
-
-        /* बैकग्राउंड का ग्राफ़िक (ग्लो इफ़ेक्ट) */
-        .glow-effect {
-            position: absolute;
-           
-            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(15,23,42,0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        /* .glow-effect-2 {
-            position: absolute;
-            bottom: 20%;
-            left: -80px;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, rgba(15,23,42,0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-        } */
-
-        /* बॉटम बटन एरिया */
+ /* बॉटम बटन एरिया */
         .action-area {
            margin-left:50px;
            
