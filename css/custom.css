@@ -186,7 +186,53 @@
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
+/* =========================================
+   Bottom Navigation
+========================================= */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #64748b;
+    position: relative;
+}
 
+.nav-item.active {
+    color: #38bdf8;
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+}
+
+.nav-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+/* Floating Action Button (Center) */
+.fab-wrapper {
+    position: relative;
+    top: -20px;
+}
+.pro-fab {
+    background: linear-gradient(135deg, #38bdf8, #3b82f6);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    border: 3px solid #0f172a;
+    transition: transform 0.2s;
+}
+
+.pro-fab:hover {
+    transform: scale(1.1);
+}
 /* =========================================
    Themes Colors (Optional visual tweaks)
 ========================================= */
@@ -255,8 +301,7 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        .header-inner {
+.header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -313,8 +358,8 @@
 
         .icon-btn:active {
             transform: scale(0.95);
-        }
-      /* === Main Content === */
+ }
+/* === Main Content === */
         main {
             flex: 1;
             overflow-y: auto;
@@ -341,11 +386,11 @@
   overflow: hidden;
   background: linear-gradient(115deg, #1B1140 0%, #3B1E8C 45%, #6B2FBF 100%);
   box-shadow: 0 18px 40px rgba(59, 30, 140, 0.45);
-  animation: pp-in .5s cubic-bezier(.2, .8, .2, 1) both;
+  animation: pp-in .5s 
+      cubic-bezier(.2, .8, .2, 1) both;
   box-sizing: border-box;
 
 }
-
 @keyframes pp-in {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -413,8 +458,7 @@
 @media (prefers-reduced-motion: reduce) {
   .pp-card, .pp-sparkle { animation: none !important; }
 }
-
-        /* Section Titles */
+/* Section Titles */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -484,7 +528,7 @@
             text-align: center;
             line-height: 1.2;
         }
-   /* Icon Colors */
+/* Icon Colors */
         .c-amber { color: #F59E0B; }
         .c-emerald { color: #10B981; }
         .c-cyan { color: #22D3EE; }
@@ -543,8 +587,7 @@
             font-weight: 700;
             margin-bottom: 4px;
         }
-
-        .badge-live {
+ .badge-live {
             background-color: rgba(34, 197, 94, 0.2);
             color: #4ADE80;
             font-size: 8px;
@@ -559,8 +602,7 @@
             color: var(--text-muted);
             font-weight: 500;
         }
-
-        /* Lock / Unlock State Hover */
+/* Lock / Unlock State Hover */
         .group-hover-btn {
             display: none;
         }
@@ -585,8 +627,7 @@
  /* .btn-unlock:hover {
             background-color: var(--accent-hover);
         } */
-
-        .btn-unlock:active {
+     .btn-unlock:active {
             transform: scale(0.95);
         }
 
@@ -599,7 +640,6 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-
         /* === Navigation Bar === */
         nav {
             position: fixed;
@@ -847,7 +887,22 @@ body {
     justify-content: center;
     cursor: pointer;
     font-size: 0.95rem;
-}
+}        
+       
+
+
+
+
+        
+   
+
+       
+
+        
+   
+
+
+
 
 /* ==========================================
    FEED CSS  REELS / CONTAINER AREA
@@ -1010,7 +1065,94 @@ body {
     margin-top: 8px;
     cursor: pointer;
 }
+/* ==========================================
+   BOTTOM NAVIGATION STYLING
+   ========================================== */
+.bottom-nav {
+    height: var(--nav-height);
+    background-color: var(--bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
 
+.nav-inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    padding: 0 8px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--inactive-gray);
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    gap: 3px;
+    position: relative;
+    width: 20%;
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+}
+
+/* Active State (Home Tab) */
+.nav-item.active {
+    color: var(--active-cyan);
+}
+
+.nav-label {
+    font-size: 0.62rem;
+}
+
+.active-dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--active-cyan);
+    border-radius: 50%;
+    margin-top: 1px;
+}
+
+/* Floating Plus Button (+) */
+.fab-wrapper {
+    position: relative;
+    top: -16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.pro-fab {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.3rem;
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.pro-fab:active {
+    transform: scale(0.92);
+}
 
 /* ==========================================
    ADVERTISEMENT MODAL
