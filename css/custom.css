@@ -1,15 +1,14 @@
        :root {
             --bg-dark: #0B0F19;
             --card-bg: #131B2C;
-            --accent: 
-            body {
-            /* Image ke jaisa dark background */
-            background-color: #0b1120;
-            margin: 0;
-            padding: 40px 20px;
-            
-        }
-
+           
+            --accent-hover: #2563EB;
+            --border: rgba(255, 255, 255, 0.06);
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --text-muted: #64748B;
+       }
+   
 /* =========================================
    Main Content Area
 ========================================= */
@@ -254,12 +253,7 @@
 .theme-orange .card-gradient-top { background: linear-gradient(90deg, #f97316, #fb923c); }
 .theme-indigo .card-gradient-top { background: linear-gradient(90deg, #6366f1, #818cf8); }
 .theme-pink .card-gradient-top { background: linear-gradient(90deg, #ec4899, #f472b6); };
-            --accent-hover: #2563EB;
-            --border: rgba(255, 255, 255, 0.06);
-            --text-main: #F8FAFC;
-            --text-sub: #94A3B8;
-            --text-muted: #64748B;
-        }
+       
  * {
             box-sizing: border-box;
             margin: 0;
@@ -368,7 +362,7 @@
             transform: scale(0.95);
  }
 /* === Main Content === */
-        main {
+        /* main {
             flex: 1;
             overflow-y: auto;
             padding-top: 25px;
@@ -382,7 +376,7 @@
             display: flex;
             flex-direction: column;
             gap: 3px;
-        }
+        } */
   /* Hero Banner - Fixed & Compact */
 .pp-card {
   position: relative; /* यह सबसे ज़रूरी है: इससे बैकग्राउंड आइकॉन सही जगह रहेगा */
@@ -453,8 +447,7 @@
   border: none; border-radius: 12px;
   padding: 5px 8px;
   cursor: pointer;
-  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+ 
 }
 .pp-cta:hover { background: #F9D976; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3); }
 .pp-cta:active { transform: translateY(0); }
@@ -2615,3 +2608,4 @@ html {
             border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer;
         }
         .btn-action:active { transform: scale(0.95); }
+         }    
