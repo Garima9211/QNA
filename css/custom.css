@@ -362,21 +362,21 @@
             transform: scale(0.95);
  }
 /* === Main Content === */
-        /* main {
+        main {
             flex: 1;
             overflow-y: auto;
             padding-top: 25px;
             padding-bottom: 112px;
             padding-left: 20px;
             padding-right: 20px;
-            scroll-behavior: smooth;
+            /* scroll-behavior: smooth; */
         }
 
         .section-gap {
             display: flex;
             flex-direction: column;
             gap: 3px;
-        } */
+        } 
   /* Hero Banner - Fixed & Compact */
 .pp-card {
   position: relative; /* यह सबसे ज़रूरी है: इससे बैकग्राउंड आइकॉन सही जगह रहेगा */
