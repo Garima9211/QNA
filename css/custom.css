@@ -642,7 +642,7 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        /* === Navigation Bar === */
+        /* === Bottom Navigation Bar === */
         nav {
             position: fixed;
             bottom: 0;

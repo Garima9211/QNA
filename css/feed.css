@@ -21,6 +21,7 @@ a {
     display: none !important;
 }
 
+
 /* Reels Main Wrapper */
 .reels-container {
     scroll-snap-type: y mandatory;
@@ -538,3 +539,118 @@ a {
     border-radius: 30px;
     cursor: pointer;
 }
+/* === Navigation Bar === */
+        nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid var(--border);
+            padding-top: 8px;
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px 8px 24px;
+            position: relative;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            width: 48px;
+            color: var(--text-muted);
+            font-size: 18px;
+            transition: color 0.15s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--text-sub);
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+        }
+
+        .nav-label {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .active-dot {
+            width: 4px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-top: 2px;
+            box-shadow: 0 0 8px #3B82F6;
+        }
+
+        .fab-wrapper {
+            position: relative;
+            width: 64px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pro-fab {
+            position: absolute;
+            bottom: -24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #2563EB, #06B6D4);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            z-index: 50;
+            transition: transform 0.2s ease;
+        }
+
+        .pro-fab:active {
+            transform: scale(0.92);
+        }
+
+        .inline-btn {
+    display: inline-block;
+}
+
+.social-title,
+.trending-title {
+    margin-bottom: 14px;
+}
+
+.test-details-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lock-icon {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.nav-label-active {
+    font-weight: 700;
+}
+   /* Container Layout */
+        .app-container {
+            width: 100%;
+            max-width: 448px;
+            margin: 0 auto;
+        }
