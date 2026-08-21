@@ -193,10 +193,10 @@
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
-/* =========================================
+ /* =========================================
    Bottom Navigation
 ========================================= */
-.nav-item {
+/*.nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,7 +218,7 @@
     font-weight: 600;
 }
 /* Floating Action Button (Center) */
-.fab-wrapper {
+/*.fab-wrapper {
     position: relative;
     top: -20px;
 }
@@ -239,7 +239,7 @@
 
 .pro-fab:hover {
     transform: scale(1.1);
-}
+} */
 /* =========================================
    Themes Colors (Optional visual tweaks)
 ========================================= */
