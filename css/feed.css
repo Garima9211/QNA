@@ -21,47 +21,14 @@ a {
     display: none !important;
 }
 
+/* Container Layout */
+        .app-container {
+            width: 100%;
+            max-width: 448px;
+            margin: 0 auto;
+        }
+
 /* Header */
-.main-header {
-    background-color: #1f2937;
-    border-bottom: 1px solid #374151;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-}
-
-.header-content {
-    width: 94%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: #3b82f6;
-}
-
-.logo span {
-    color: #ffffff;
-}
-
-.nav-links a {
-    margin-left: 15px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #d1d5db;
-}
-
-.nav-links a:hover {
-    color: #3b82f6;
-}
 
 /* Reels Main Wrapper */
 .reels-container {
