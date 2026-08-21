@@ -21,15 +21,6 @@ a {
     display: none !important;
 }
 
-/* Container Layout */
-        .app-container {
-            width: 100%;
-            max-width: 448px;
-            margin: 0 auto;
-        }
-
-/* Header */
-
 /* Reels Main Wrapper */
 .reels-container {
     scroll-snap-type: y mandatory;
