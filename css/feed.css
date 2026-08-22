@@ -581,20 +581,20 @@ a {
             color: var(--accent);
         }
 
-        .nav-label {
+        .nav-label{
             font-size: 9px;
-            font-weight: 500;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-        }
-        .fab-wrapper {
+            text-align: center;
+         }   
+            .fab-wrapper {
             position: relative;
             width: 64px;
             display: flex;
             justify-content: center;
-        }
-
-        .pro-fab {
+        }  
+           .pro-fab {
             position: absolute;
             bottom: -24px;
             width: 50px;
@@ -610,16 +610,14 @@ a {
             font-size: 20px;
             z-index: 50;
             transition: transform 0.2s ease;
-        }
-
-        .pro-fab:active {
+        }  
+       .pro-fab:active {
             transform: scale(0.92);
         }
 
         .inline-btn {
     display: inline-block;
-}
-
+}      
 .social-title,
 .trending-title {
     margin-bottom: 14px;
@@ -635,9 +633,7 @@ a {
     color: var(--text-muted);
     font-size: 12px;
 }
-
-
-   /* Container Layout */
+/* Container Layout */
         .app-container {
             width: 100%;
             max-width: 448px;
