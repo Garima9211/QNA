@@ -1,112 +1,109 @@
 /*==========================
  LOGIN PAGE CSS    
  ==========================*/
-   /* बॉडी - डार्क बैकग्राउंड और सेंटर अलाइनमेंट */
-        body {
-            background-color: #0f172a;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;  
-        }
- /* मुख्य कंटेनर - मोबाइल साइज बनाए रखने के लिए */
-        .app-container {
-            width: 100%; 
-            max-width: 480px; /* डेस्कटॉप पर भी मोबाइल जैसा दिखेगा */
-            margin:30px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            /* border: #64748b 1px solid;
-            border-radius:20px; */
-           
-        }
 
-        /* मुख्य कंटेंट एरिया */
-        /* .content {
-            flex: 1;
-            padding: 30px 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            z-index: 10;
-        } */
-        img {
-            padding-right:5px;
-
-   
+/* बॉडी - डार्क बैकग्राउंड और सेंटर अलाइनमेंट */
+body {
+    background-color: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+    margin: 0;
+    font-family: sans-serif;
 }
 
-        /* हैडर और ब्रांडिंग - सेंटर अलाइन */
-        .header {
-            text-align: center;
-            margin-bottom: 60px; 
-        }
+/* मुख्य कंटेनर */
+.app-container {
+    width: 100%; 
+    max-width: 480px; 
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-        .welcome-text {
-            color: #94a3b8;
-            font-size: 20px;
-            margin-bottom: 8px;
-            margin-top: 150px;
-            font-weight: 600;
-            margin-right: 100px;
-        }
+/* हैडर और ब्रांडिंग */
+.header {
+    margin-bottom: 50px; 
+}
 
-        .logo {
-            font-size: 35px;
-            font-weight: 600;
-            color: #ffffff;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            margin-right: 100px;
-        }
+.welcome-text {
+    color: #94a3b8;
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
 
-        .logo span {
-            color: #7C3AED
-        }
+.logo {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin: 0;
+}
 
-        .subtitle {
-            color: #94a3b8;
-            font-size: 16px;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
- /* बॉटम बटन एरिया */
-        .action-area {
-           margin-left:50px;
-           
-        }
+.logo span {
+    color: #7C3AED;
+}
 
-        /* बड़ा मोबाइल-स्टाइल Google बटन */
+.subtitle {
+    color: #94a3b8;
+    font-size: 16px;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* बॉटम बटन एरिया - यहाँ मुख्य बदलाव किए गए हैं */
+.action-area {
+    display: flex;
+    flex-direction: column; /* यह बटन और टेक्स्ट को ऊपर-नीचे करेगा */
+    align-items: center;    /* सेंटर में रखेगा */
+    width: 100%;
+    gap: 20px; /* बटन और फुटर टेक्स्ट के बीच की दूरी */
+}
+
+/* बड़ा मोबाइल-स्टाइल Google बटन */
 .google-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: fit-content; /* Full width hatakar sirf required size lega */
+    gap: 10px;
     background-color: #ffffff;
     color: #0f172a;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    white-space: nowrap; /* टेक्स्ट को 2 लाइन में टूटने से रोकेगा */
+    width: max-content;  /* बटन को केवल उतनी जगह देगा जितनी टेक्स्ट को चाहिए */
 }
-     
 
-        .google-btn:active {
-            transform: scale(0.96); 
-        }
+.google-btn img {
+    width: 20px;
+    height: 20px;
+}
 
-        /* फुटर टेक्स्ट */
-        .footer-text {
-            text-align: center;
-            color: #64748b;
-            font-size: 13px;
-            margin-top: 25px;
-        }
+.google-btn:active {
+    transform: scale(0.96); 
+}
 
-        .footer-text a {
-            color: #FFFF;
-            text-decoration: none;
-        }
+/* फुटर टेक्स्ट */
+.footer-text {
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    margin: 0;
+}
+
+.footer-text a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
