@@ -189,53 +189,7 @@
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
- /* =========================================
-   Bottom Navigation
-========================================= */
-/*.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: #64748b;
-    position: relative;
-}
 
-.nav-item.active {
-    color: #38bdf8;
-}
-
-.nav-icon {
-    font-size: 1.2rem;
-}
-
-.nav-text {
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-/* Floating Action Button (Center) */
-/*.fab-wrapper {
-    position: relative;
-    top: -20px;
-}
-.pro-fab {
-    background: linear-gradient(135deg, #38bdf8, #3b82f6);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
-    border: 3px solid #0f172a;
-    transition: transform 0.2s;
-}
-
-.pro-fab:hover {
-    transform: scale(1.1);
-} */
 /* =========================================
    Themes Colors (Optional visual tweaks)
 ========================================= */
