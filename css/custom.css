@@ -593,7 +593,7 @@
             scrollbar-width: none;
         }
         /* === Bottom Navigation Bar === */
-        nav {
+         nav {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -621,9 +621,11 @@
             align-items: center;
             gap: 4px;
             width: 48px;
+            position: relative;
             color: var(--text-muted);
             font-size: 18px;
             transition: color 0.15s ease;
+           
         }
 
         .nav-item:hover {
@@ -634,6 +636,15 @@
             color: var(--accent);
         }
 
+        /* .nav-icon {
+    font-size: 1.2rem;
+}
+
+.nav-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+} */
+
         .nav-label {
             font-size: 9px;
             font-weight: 600;
@@ -641,17 +652,33 @@
             letter-spacing: 0.05em;
             text-align: center;
         }
+/* Floating Action Button (Center) */
 
+.pro-fab {
+    background: linear-gradient(135deg, #9937cdf6, #7f2eaaa7);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    border: 3px solid #0f172a;
+    transition: transform 0.2s;
+}
+
+.pro-fab:hover {
+    transform: scale(1.1);
+}
       .fab-wrapper {
             position: relative;
+            top: -20px;
             width: 64px;
             display: flex;
             justify-content: center;
         }
-
-   
-
-       
         .inline-btn {
     display: inline-block;
 }
@@ -822,29 +849,12 @@ body {
     cursor: pointer;
     font-size: 0.95rem;
 }        
-       
-
-
-
-
-        
-   
-
-       
-
-        
-   
-
-
-
-
-
-  /*==========GK_CATEGORY.CSS========*/
-* Main Layout */
+ /*==========GK_CATEGORY.CSS========*/
+/* Main Layout */
 .main-container {
     max-width: 72rem; /* 1152px */
     margin: 100px auto;
-    padding: 0 1rem; /* साइड में थोड़ा स्पेस देने के लिए */
+    /* padding: 0 1rem; साइड में थोड़ा स्पेस देने के लिए */
 }
 
 /* Grid Layout */
@@ -966,7 +976,7 @@ html {
             min-height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            /* justify-content: space-between; */
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent; 
         }
@@ -1012,7 +1022,7 @@ html {
             filter: blur(60px); 
             pointer-events: none;
         }
-/* === 5. मुख्य लेआउट (Main Container) === */
+/* === 5. (Main Container) === */
         main {
             flex: 1;
             max-width: 896px; /* 4xl */
@@ -1580,56 +1590,6 @@ html {
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
-
-/* =========================================
-   Bottom Navigation
-========================================= */
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: #64748b;
-    position: relative;
-}
-
-/* .nav-item.active {
-    color: #38bdf8;
-} */
-
-.nav-icon {
-    font-size: 1.2rem;
-}
-
-.nav-text {
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-/* Floating Action Button (Center) */
-.fab-wrapper {
-    position: relative;
-    top: -20px;
-}
-.pro-fab {
-    background: linear-gradient(135deg, #9937cdf6, #7f2eaaa7);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
-    border: 3px solid #0f172a;
-    transition: transform 0.2s;
-}
-
-.pro-fab:hover {
-    transform: scale(1.1);
-}
-
 /*---- CURRENT AFFAIRS CSS section index page----*/
       
         
@@ -1777,4 +1737,3 @@ html {
             border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer;
         }
         .btn-action:active { transform: scale(0.95); }
-         }    
