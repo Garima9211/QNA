@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=375, user-scalable=no">
     <title>The QNA Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/wallet.css">
     
 </head>
 <body>
 
     <div class="mobile-frame">
-        <div class="notch"></div>
+        
 
         <!-- 1. Header (Designer Space) -->
         <div class="header-placeholder">
@@ -85,10 +86,38 @@
 
         </div>
 
-        <!-- 3. फुटर / नेविगेशन के लिए खाली जगह (Designer Space) -->
-        <div class="footer-placeholder">
-            [ Designer: Insert Bottom Navigation Here ]
+        <!-- === 3. Bottom Navigation Bar=== -->
+       <nav>
+        <div class="app-container nav-inner">
+            <a href="./index.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span class="nav-label nav-label-active">Home</span>
+                
+            </a>
+
+            <a href="./feed.html" class="nav-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="nav-label">Feed</span>
+            </a>
+
+        <div class="fab-wrapper">
+          <a href="./offer.html" aria-label="Add Question" class="pro-fab">
+               <!-- <i class="fa-solid fa-plus"></i> -->
+                <span class="nav-label">My Offer</span>
+            </a>
+         </div>
+
+            <a href="./category.html" class="nav-item">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="nav-label">Test</span>
+            </a>
+
+            <a href="login.html" onclick="openProfile()" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span class="nav-label">Me</span>
+            </a>
         </div>
+    </nav>
 
     </div>
 

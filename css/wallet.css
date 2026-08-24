@@ -3,8 +3,13 @@
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
+            color: white;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             -webkit-font-smoothing: antialiased;
+        }
+         a {
+            text-decoration: none;
+            color: inherit;
         }
 
         body {
@@ -16,36 +21,23 @@
         }
 
         /* फिक्स्ड मोबाइल फ्रेम */
-        /* .mobile-frame {
+         .mobile-frame {
             width: 375px; 
-            height: 812px; 
+            height: 812px;
             background: #090a0f; 
-            border-radius: 40px; 
+            /* border-radius: 40px; 
             border: 8px solid #1e293b; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); */
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        .notch {
-            width: 150px;
-            height: 25px;
-            background: #1e293b;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            z-index: 20;
-        } */
-
         /* -------------------------------------------
-           HEADER PLACEHOLDER (डिज़ाइनर के लिए जगह)
+           HEADER PLACEHOLDER 
         ---------------------------------------------*/
-        .header-placeholder {
+         .header-placeholder {
             height: 70px;
             margin-top: 30px;
             margin-bottom: 20px; /* थोड़ा मार्जिन बढ़ाया गया है */
@@ -58,23 +50,111 @@
             background: rgba(255, 255, 255, 0.02);
             border-radius: 8px;
             margin-inline: 16px;
+        } 
+
+    
+
+       /* === Bottom Navigation Bar === */
+    /* Container Layout */
+        .app-container {
+            width: 100%;
+            max-width: 448px;
+            margin: 0 auto;
         }
 
-        /* -------------------------------------------
-           FOOTER PLACEHOLDER (डिज़ाइनर के लिए जगह)
-        ---------------------------------------------*/
-        .footer-placeholder {
-            height: 70px;
+         nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid var(--border);
+            padding-top: 8px;
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px 8px 24px;
+            position: relative;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            width: 48px;
+            color: var(--text-muted);
+            font-size: 18px;
+            transition: color 0.15s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--text-sub);
+        }
+
+        .nav-item.active {
+            color: var(--accent);
+        }
+
+        .nav-label{
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+         }   
+            .fab-wrapper {
+            position: relative;
+            width: 64px;
             display: flex;
             justify-content: center;
+        }  
+           .pro-fab {
+            position: absolute;
+            bottom: -24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #9937cdf6 !important;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4) !important;
+            border: 2px solid #0f172a;
+            display: flex;
             align-items: center;
-            border: 1.5px dashed #334155;
-            color: #64748b;
-            font-size: 13px;
-            background: rgba(255, 255, 255, 0.02);
-            margin: 10px 16px 20px;
-            border-radius: 8px;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            z-index: 50;
+            transition: transform 0.2s ease;
+        }  
+       .pro-fab:active {
+            transform: scale(0.92);
         }
+
+        .inline-btn {
+    display: inline-block;
+}      
+.social-title,
+.trending-title {
+    margin-bottom: 14px;
+}
+
+.test-details-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lock-icon {
+    color: var(--text-muted);
+    font-size: 12px;
+}
 
         /* स्क्रॉल होने वाला मुख्य कंटेंट एरिया */
         .content {
